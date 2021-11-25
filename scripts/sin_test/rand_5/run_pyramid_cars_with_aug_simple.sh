@@ -1,10 +1,10 @@
 #!/bin/bash
 #GPU_ID='2'
 # Choose GPU ID with CUDA_VISIBLE_DEVICES={id}
-CONFIG_MAIN=avod/configs/simple/pyramid_cars_with_aug_simple.config
-CONFIG_EVALSIN=avod/configs/simple/rand_5/pyramid_cars_with_aug_simple_evalsin_rand_5.config
-CONFIG_EVALAIN=avod/configs/simple/rand_5/pyramid_cars_with_aug_simple_evalain_rand_5.config
-OUTPUT_DIR=/data/kitti_avod/object/outputs
+CONFIG_MAIN=./avod/configs/simple/pyramid_cars_with_aug_simple.config
+CONFIG_EVALSIN=./avod/configs/simple/rand_5/pyramid_cars_with_aug_simple_evalsin_rand_5.config
+CONFIG_EVALAIN=./avod/configs/simple/rand_5/pyramid_cars_with_aug_simple_evalain_rand_5.config
+OUTPUT_DIR=./data/kitti_avod/object/outputs
 # EVAL_CKPTS='60 90 120'
 EVAL_CKPTS='120'
 
