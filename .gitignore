@@ -1,3 +1,7 @@
+# Generated from runs
+avod/data/*
+
+
 *.pyc
 *.DS_Store
 etc/
