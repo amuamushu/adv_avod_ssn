@@ -1,5 +1,6 @@
 # Generated from runs
 avod/data/*
+data/*
 
 
 *.pyc
