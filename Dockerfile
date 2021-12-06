@@ -21,7 +21,9 @@ RUN apt-get update && apt-get install \
     protobuf-compiler \
     build-essential \
     g++ -y \
-    cmake
+    cmake \
+    libboost-all-dev \
+    build-essential
 
 # 3) install packages using notebook user
 # USER jovyan

@@ -1,3 +1,4 @@
+#!/bin/bash
 #GPU_ID='2'
 # Choose GPU ID with CUDA_VISIBLE_DEVICES={id}
 CONFIG_MAIN=avod/configs/simple/test.config
