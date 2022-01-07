@@ -14,31 +14,31 @@ python avod/experiments/run_training.py \
         --data_split='train' # \
         # --output_dir=${OUTPUT_DIR}
 
-# Eval data on validation set (Clean)
-python avod/experiments/run_inference.py \
-        --experiment_config=${CONFIG_MAIN} \
-        --data_split='val' \
-        # --output_dir=${OUTPUT_DIR} \
-        --ckpt_indices ${EVAL_CKPTS}
+# # Eval data on validation set (Clean)
+# python avod/experiments/run_inference.py \
+#         --experiment_config=${CONFIG_MAIN} \
+#         --data_split='val' \
+#         --ckpt_indices ${EVAL_CKPTS}
+#         # --output_dir=${OUTPUT_DIR} \        
 
-# Eval data on validation set (SIN)
-python avod/experiments/run_inference.py \
-        --experiment_config=${CONFIG_EVALSIN} \
-        --data_split='val' \
-        # --output_dir=${OUTPUT_DIR} \
-        --ckpt_indices ${EVAL_CKPTS}
+# # Eval data on validation set (SIN)
+# python avod/experiments/run_inference.py \
+#         --experiment_config=${CONFIG_EVALSIN} \
+#         --data_split='val' \
+#         --ckpt_indices ${EVAL_CKPTS}
+#         # --output_dir=${OUTPUT_DIR} \        
 
-python ./utils_sin/sin_calc_avg_kitti_eval.py \
-        --experiment_config=${CONFIG_EVALSIN} \
-        --data_split='val'
+# python ./utils_sin/sin_calc_avg_kitti_eval.py \
+#         --experiment_config=${CONFIG_EVALSIN} \
+#         --data_split='val'
 
-# Eval data on validation set (AIN)
-python avod/experiments/run_inference.py \
-        --experiment_config=${CONFIG_EVALAIN} \
-        --data_split='val' \
-        # --output_dir=${OUTPUT_DIR} \
-        --ckpt_indices ${EVAL_CKPTS}
+# # Eval data on validation set (AIN)
+# python avod/experiments/run_inference.py \
+#         --experiment_config=${CONFIG_EVALAIN} \
+#         --data_split='val' \
+#         --ckpt_indices ${EVAL_CKPTS}
+#         # --output_dir=${OUTPUT_DIR} \        
 
-python ./utils_sin/sin_calc_avg_kitti_eval.py \
-        --experiment_config=${CONFIG_EVALAIN} \
-        --data_split='val'
+# python ./utils_sin/sin_calc_avg_kitti_eval.py \
+#         --experiment_config=${CONFIG_EVALAIN} \
+#         --data_split='val'
