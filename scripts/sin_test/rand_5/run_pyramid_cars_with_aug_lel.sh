@@ -9,6 +9,7 @@ CONFIG_EVALAIN=avod/configs/lel/rand_5/pyramid_cars_with_aug_lel_evalain_rand_5.
 EVAL_CKPTS='120'
 
 # Train model for clean data
+echo "TRAINING LEL"
 python avod/experiments/run_training.py \
         --pipeline_config=${CONFIG_MAIN} \
         --data_split='train' # \
