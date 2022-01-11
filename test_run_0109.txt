@@ -1,0 +1,434 @@
+2022-01-09 20:39:18.790316: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-09 20:39:19.648218: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9659 MB memory:  -> device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:64:00.0, compute capability: 7.5
+/opt/conda/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer_v1.py:1694: UserWarning: `layer.apply` is deprecated and will be removed in a future version. Please use `layer.__call__` method instead.
+  warnings.warn('`layer.apply` is deprecated and '
+/opt/conda/lib/python3.9/site-packages/tensorflow/python/keras/legacy_tf_layers/core.py:336: UserWarning: `tf.layers.flatten` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Flatten` instead.
+  warnings.warn('`tf.layers.flatten` is deprecated and '
+2022-01-09 20:39:25.284343: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2022-01-09 20:39:25.978085: I tensorflow/core/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+2022-01-09 20:39:25.979474: I tensorflow/core/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+2022-01-09 20:39:25.979548: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Couldn't invoke ptxas --version
+2022-01-09 20:39:25.980561: I tensorflow/core/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+2022-01-09 20:39:25.980717: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: Failed to launch ptxas
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+Step 20: 1 / 6, Inference on sample 000001
+Step 20: 2 / 6, Inference on sample 000002
+Step 20: 3 / 6, Inference on sample 000004
+Step 20: 4 / 6, Inference on sample 000005
+Step 20: 5 / 6, Inference on sample 000006
+Step 20: 6 / 6, Inference on sample 000008
+Feed dict time:
+Min:  0.74701
+Max:  1.37701
+Mean:  1.13259
+Median:  1.18297
+Inference time:
+Min:  0.25501
+Max:  4.86321
+Mean:  1.10525
+Median:  0.39812
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions/kitti_native_eval/0.1_val/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 1
+Num samples: 6
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions/proposals_and_scores/val/20
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions/kitti_native_eval/ first 1
+20
+mkdir: cannot create directory ‘0.1_val/20/plot’: File exists
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions/kitti_native_eval/
+20
+sh: 1: gnuplot: not found
+mkdir: cannot create directory ‘0.1_val/20/plot_05_iou’: File exists
+sh: 1: gnuplot: not found
+sh: 1: gnuplot: not found
+rm: cannot remove '0.1_val/20/plot': Directory not empty
+ERROR: Couldn't read: 000002.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+sh: 1: gnuplot: not found
+test_results_05_iou_0.1_val.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou/ print run_eval_05_iou.sh
+cp: cannot stat 'test_results_05_iou_0.1_val.txt': No such file or directory
+sh: 1: gnuplot: not found
+sh: 1: gnuplot: not found
+  done.
+car_detection AP: 0.000000 0.000000 0.000000
+car_detection_BEV AP: 0.000000 0.000000 0.000000
+car_heading_BEV AP: 0.000000 0.000000 0.000000
+car_detection_3D AP: 0.000000 0.000000 0.000000
+car_heading_3D AP: 0.000000 0.000000 0.000000
+test_results_0.1_val.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val.txt': No such file or directory
+2022-01-09 20:39:41.158774: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-01-09 20:39:41.798624: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9659 MB memory:  -> device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:64:00.0, compute capability: 7.5
+/opt/conda/lib/python3.9/site-packages/tensorflow/python/keras/engine/base_layer_v1.py:1694: UserWarning: `layer.apply` is deprecated and will be removed in a future version. Please use `layer.__call__` method instead.
+  warnings.warn('`layer.apply` is deprecated and '
+/opt/conda/lib/python3.9/site-packages/tensorflow/python/keras/legacy_tf_layers/core.py:336: UserWarning: `tf.layers.flatten` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Flatten` instead.
+  warnings.warn('`tf.layers.flatten` is deprecated and '
+2022-01-09 20:39:47.519368: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2022-01-09 20:39:48.199851: I tensorflow/core/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+2022-01-09 20:39:48.200639: I tensorflow/core/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+2022-01-09 20:39:48.200689: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Couldn't invoke ptxas --version
+2022-01-09 20:39:48.201508: I tensorflow/core/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+2022-01-09 20:39:48.201671: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: Failed to launch ptxas
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+Step 20: 1 / 6, Inference on sample 000001 (image Rep:1/5)
+Step 20: 2 / 6, Inference on sample 000002 (image Rep:1/5)
+Step 20: 3 / 6, Inference on sample 000004 (image Rep:1/5)
+Step 20: 4 / 6, Inference on sample 000005 (image Rep:1/5)
+Step 20: 5 / 6, Inference on sample 000006 (image Rep:1/5)
+Step 20: 6 / 6, Inference on sample 000008 (image Rep:1/5)
+Feed dict time:
+Min:  1.04727
+Max:  1.41863
+Mean:  1.25544
+Median:  1.27174
+Inference time:
+Min:  0.21443
+Max:  4.91859
+Mean:  1.10483
+Median:  0.33893
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/0.1_val_0_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/ first 1
+20
+  done.
+test_results_0.1_val_0_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/image/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_0_rep.txt': No such file or directory
+20
+mkdir: cannot create directory ‘0.1_val_0_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000005.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/image/': No such file or directory
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/proposals_and_scores/val/20
+Step 20: 1 / 6, Inference on sample 000001 (image Rep:2/5)
+Step 20: 2 / 6, Inference on sample 000002 (image Rep:2/5)
+Step 20: 3 / 6, Inference on sample 000004 (image Rep:2/5)
+Step 20: 4 / 6, Inference on sample 000005 (image Rep:2/5)
+Step 20: 5 / 6, Inference on sample 000006 (image Rep:2/5)
+Step 20: 6 / 6, Inference on sample 000008 (image Rep:2/5)
+Feed dict time:
+Min:  0.78644
+Max:  1.81402
+Mean:  1.31788
+Median:  1.31392
+Inference time:
+Min:  0.07206
+Max:  0.22144
+Mean:  0.15856
+Median:  0.17887
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/0.1_val_1_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/ first 1
+20
+  done.
+test_results_0.1_val_1_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/image/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_1_rep.txt': No such file or directory
+20
+mkdir: cannot create directory ‘0.1_val_1_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000004.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/image/': No such file or directory
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/proposals_and_scores/val/20
+Step 20: 1 / 6, Inference on sample 000001 (image Rep:3/5)
+Step 20: 2 / 6, Inference on sample 000002 (image Rep:3/5)
+Step 20: 3 / 6, Inference on sample 000004 (image Rep:3/5)
+Step 20: 4 / 6, Inference on sample 000005 (image Rep:3/5)
+Step 20: 5 / 6, Inference on sample 000006 (image Rep:3/5)
+Step 20: 6 / 6, Inference on sample 000008 (image Rep:3/5)
+Feed dict time:
+Min:  0.90093
+Max:  1.44973
+Mean:  1.17359
+Median:  1.18512
+Inference time:
+Min:  0.06219
+Max:  0.22622
+Mean:  0.17849
+Median:  0.20198
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/0.1_val_2_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/ first 1
+20
+  done.
+test_results_0.1_val_2_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/image/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_2_rep.txt': No such file or directory
+20
+mkdir: cannot create directory ‘0.1_val_2_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000002.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/image/': No such file or directory
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/proposals_and_scores/val/20
+Step 20: 1 / 6, Inference on sample 000001 (image Rep:4/5)
+Step 20: 2 / 6, Inference on sample 000002 (image Rep:4/5)
+Step 20: 3 / 6, Inference on sample 000004 (image Rep:4/5)
+Step 20: 4 / 6, Inference on sample 000005 (image Rep:4/5)
+Step 20: 5 / 6, Inference on sample 000006 (image Rep:4/5)
+Step 20: 6 / 6, Inference on sample 000008 (image Rep:4/5)
+Feed dict time:
+Min:  0.93565
+Max:  1.56749
+Mean:  1.15401
+Median:  1.12733
+Inference time:
+Min:  0.14621
+Max:  0.22649
+Mean:  0.18588
+Median:  0.18462
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/0.1_val_3_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/ first 1
+20
+  done.
+test_results_0.1_val_3_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/image/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_3_rep.txt': No such file or directory
+20
+mkdir: cannot create directory ‘0.1_val_3_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000006.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/image/': No such file or directory
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/proposals_and_scores/val/20
+Step 20: 1 / 6, Inference on sample 000001 (image Rep:5/5)
+Step 20: 2 / 6, Inference on sample 000002 (image Rep:5/5)
+Step 20: 3 / 6, Inference on sample 000004 (image Rep:5/5)
+Step 20: 4 / 6, Inference on sample 000005 (image Rep:5/5)
+Step 20: 5 / 6, Inference on sample 000006 (image Rep:5/5)
+Step 20: 6 / 6, Inference on sample 000008 (image Rep:5/5)
+Feed dict time:
+Min:  1.3395
+Max:  1.58404
+Mean:  1.41524
+Median:  1.38912
+Inference time:
+Min:  0.06567
+Max:  0.22133
+Mean:  0.11859
+Median:  0.09759
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/0.1_val_4_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/kitti_native_eval/ first 1
+20
+  done.
+test_results_0.1_val_4_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/image/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_4_rep.txt': No such file or directory
+20
+mkdir: cannot create directory ‘0.1_val_4_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000001.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/image/': No such file or directory
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/image/proposals_and_scores/val/20
+Step 20: 1 / 6, Inference on sample 000001 (lidar Rep:1/5)
+Step 20: 2 / 6, Inference on sample 000002 (lidar Rep:1/5)
+Step 20: 3 / 6, Inference on sample 000004 (lidar Rep:1/5)
+Step 20: 4 / 6, Inference on sample 000005 (lidar Rep:1/5)
+Step 20: 5 / 6, Inference on sample 000006 (lidar Rep:1/5)
+Step 20: 6 / 6, Inference on sample 000008 (lidar Rep:1/5)
+Feed dict time:
+Min:  0.89477
+Max:  1.63254
+Mean:  1.35082
+Median:  1.39474
+Inference time:
+Min:  0.0717
+Max:  0.2146
+Mean:  0.13802
+Median:  0.1346
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/0.1_val_0_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/ first 1
+20
+  done.
+test_results_0.1_val_0_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/lidar/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_0_rep.txt': No such file or directory
+20
+mkdir: cannot create directory ‘0.1_val_0_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000005.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/lidar/': No such file or directory
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/proposals_and_scores/val/20
+Step 20: 1 / 6, Inference on sample 000001 (lidar Rep:2/5)
+Step 20: 2 / 6, Inference on sample 000002 (lidar Rep:2/5)
+Step 20: 3 / 6, Inference on sample 000004 (lidar Rep:2/5)
+Step 20: 4 / 6, Inference on sample 000005 (lidar Rep:2/5)
+Step 20: 5 / 6, Inference on sample 000006 (lidar Rep:2/5)
+Step 20: 6 / 6, Inference on sample 000008 (lidar Rep:2/5)
+Feed dict time:
+Min:  0.98111
+Max:  1.5149
+Mean:  1.16321
+Median:  1.07479
+Inference time:
+Min:  0.06687
+Max:  0.15291
+Mean:  0.09313
+Median:  0.08535
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/0.1_val_1_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/ first 1
+20
+  done.
+test_results_0.1_val_1_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/lidar/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_1_rep.txt': No such file or directory
+20
+mkdir: cannot create directory ‘0.1_val_1_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000008.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/lidar/': No such file or directory
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/proposals_and_scores/val/20
+Step 20: 1 / 6, Inference on sample 000001 (lidar Rep:3/5)
+Step 20: 2 / 6, Inference on sample 000002 (lidar Rep:3/5)
+Step 20: 3 / 6, Inference on sample 000004 (lidar Rep:3/5)
+Step 20: 4 / 6, Inference on sample 000005 (lidar Rep:3/5)
+Step 20: 5 / 6, Inference on sample 000006 (lidar Rep:3/5)
+Step 20: 6 / 6, Inference on sample 000008 (lidar Rep:3/5)
+Feed dict time:
+Min:  1.12911
+Max:  1.52087
+Mean:  1.33373
+Median:  1.32851
+Inference time:
+Min:  0.07699
+Max:  0.27431
+Mean:  0.16642
+Median:  0.1614
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/0.1_val_2_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/ first 1
+20
+  done.
+test_results_0.1_val_2_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/lidar/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_2_rep.txt': No such file or directory
+20
+mkdir: cannot create directory ‘0.1_val_2_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000004.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/lidar/': No such file or directory
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/proposals_and_scores/val/20
+Step 20: 1 / 6, Inference on sample 000001 (lidar Rep:4/5)
+Step 20: 2 / 6, Inference on sample 000002 (lidar Rep:4/5)
+Step 20: 3 / 6, Inference on sample 000004 (lidar Rep:4/5)
+Step 20: 4 / 6, Inference on sample 000005 (lidar Rep:4/5)
+Step 20: 5 / 6, Inference on sample 000006 (lidar Rep:4/5)
+Step 20: 6 / 6, Inference on sample 000008 (lidar Rep:4/5)
+Feed dict time:
+Min:  1.12355
+Max:  1.64502
+Mean:  1.34652
+Median:  1.32444
+Inference time:
+Min:  0.06872
+Max:  0.23666
+Mean:  0.13794
+Median:  0.11445
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/0.1_val_3_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/ first 1
+20
+  done.
+test_results_0.1_val_3_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/lidar/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_3_rep.txt': No such file or directory
+20
+mkdir: cannot create directory ‘0.1_val_3_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000004.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/lidar/': No such file or directory
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/proposals_and_scores/val/20
+Step 20: 1 / 6, Inference on sample 000001 (lidar Rep:5/5)
+Step 20: 2 / 6, Inference on sample 000002 (lidar Rep:5/5)
+Step 20: 3 / 6, Inference on sample 000004 (lidar Rep:5/5)
+Step 20: 4 / 6, Inference on sample 000005 (lidar Rep:5/5)
+Step 20: 5 / 6, Inference on sample 000006 (lidar Rep:5/5)
+Step 20: 6 / 6, Inference on sample 000008 (lidar Rep:5/5)
+Feed dict time:
+Min:  0.69539
+Max:  1.36132
+Mean:  1.09419
+Median:  1.1357
+Inference time:
+Min:  0.06233
+Max:  0.21392
+Mean:  0.14133
+Median:  0.14613
+
+Global step: 20
+Converting detections from: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/final_predictions_and_scores/val/20
+3D Detections being saved to: ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/0.1_val_4_rep/20/data
+Converting 1 / 6Converting 2 / 6Converting 3 / 6Converting 4 / 6Converting 5 / 6Converting 6 / 6
+Num valid: 0
+Num samples: 6
+Step 20: Finished evaluation, results saved to ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/proposals_and_scores/val/20
+../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/predictions_sin_rand_5.0_5/lidar/kitti_native_eval/ first 1
+20
+20
+  done.
+test_results_0.1_val_4_rep.txt ../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/lidar/ print run_eval.sh
+cp: cannot stat 'test_results_0.1_val_4_rep.txt': No such file or directory
+mkdir: cannot create directory ‘0.1_val_4_rep/20/plot_05_iou’: File exists
+ERROR: Couldn't read: 000005.txt of ground truth. Please write me an email!
+An error occured while processing your results.
+cp: cannot create regular file '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_05_iou_sin_rand_5.0_5/lidar/': No such file or directory
+Called with args:
+Namespace(output_dir='../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs', experiment_config_path='avod/configs/simple/rand_5/evalsin_test.config', data_split='val')
+..Working on avod/configs/simple/rand_5/evalsin_test.config
+Traceback (most recent call last):
+  File "/home/atn001/avod_ssn/./utils_sin/sin_calc_avg_kitti_eval.py", line 301, in <module>
+    sys.exit(main(args))
+  File "/home/atn001/avod_ssn/./utils_sin/sin_calc_avg_kitti_eval.py", line 266, in main
+    calc_avg_scores(args.output_dir,model_config,eval_config,dataset_config,args.data_split)
+  File "/home/atn001/avod_ssn/./utils_sin/sin_calc_avg_kitti_eval.py", line 48, in calc_avg_scores
+    ckpt_list = get_ckpt_list(os.path.join(res_dir,fname))
+  File "/home/atn001/avod_ssn/./utils_sin/sin_calc_avg_kitti_eval.py", line 224, in get_ckpt_list
+    with open(res_file,'r') as fid:
+FileNotFoundError: [Errno 2] No such file or directory: '../teams/DSC180A_FA21_A00/a15/avod_data/kitti_avod/object/outputs/test/offline_eval/results_sin_rand_5.0_5/image/test_results_0.1_val_0_rep.txt'
