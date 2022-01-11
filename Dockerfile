@@ -23,7 +23,9 @@ RUN apt-get update && apt-get install \
     g++ -y \
     cmake \
     libboost-all-dev \
-    build-essential
+    build-essential \
+    gnuplot \
+    gnuplot5
 
 # 3) install packages using notebook user
 # USER jovyan
