@@ -15,14 +15,14 @@ python avod/experiments/run_inference.py \
         --experiment_config=${CONFIG_MAIN} \
         --data_split='val' \
         --ckpt_indices ${EVAL_CKPTS}
-echo "SIN RUN INFERENCE"
-# Eval data on validation set (SIN)
-python avod/experiments/run_inference.py \
-        --experiment_config=${CONFIG_EVALSIN} \
-        --data_split='val' \
-        --ckpt_indices ${EVAL_CKPTS}
-        # --output_dir=${OUTPUT_DIR} \        
-echo "SIN CALC AVG KITTI EVAL"
-python ./utils_sin/sin_calc_avg_kitti_eval.py \
-        --experiment_config=${CONFIG_EVALSIN} \
-        --data_split='val'        
+# echo "SIN RUN INFERENCE"
+# # Eval data on validation set (SIN)
+# python avod/experiments/run_inference.py \
+#         --experiment_config=${CONFIG_EVALSIN} \
+#         --data_split='val' \
+#         --ckpt_indices ${EVAL_CKPTS}
+#         # --output_dir=${OUTPUT_DIR} \        
+# echo "SIN CALC AVG KITTI EVAL"
+# python ./utils_sin/sin_calc_avg_kitti_eval.py \
+#         --experiment_config=${CONFIG_EVALSIN} \
+#         --data_split='val'        
