@@ -5,10 +5,10 @@ CONFIG_MAIN=avod/configs/simple/test.config
 CONFIG_EVALSIN=avod/configs/simple/rand_5/evalsin_test.config
 EVAL_CKPTS='2'
 
-# # Train model for clean data
-# python avod/experiments/run_training.py \
-#         --pipeline_config=${CONFIG_MAIN} \
-#         --data_split='train' # \
+# Train model for clean data
+python avod/experiments/run_training.py \
+        --pipeline_config=${CONFIG_MAIN} \
+        --data_split='train' # \
 echo "CLEAN RUN INFERENCE"
 # Eval data on validation set (Clean)
 python avod/experiments/run_inference.py \
