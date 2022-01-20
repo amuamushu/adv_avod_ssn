@@ -1,7 +1,7 @@
 # Generated from runs
 avod/data/*
 data/*
-
+logs/
 
 *.pyc
 *.DS_Store
