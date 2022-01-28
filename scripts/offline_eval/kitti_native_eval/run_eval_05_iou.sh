@@ -9,3 +9,4 @@ cwd=$(pwd)
 cd ~/avod_ssn
 echo $cwd/$4_results_05_iou_$2.txt
 cp -R $cwd/$4_results_05_iou_$2.txt $5
+cd $cwd
