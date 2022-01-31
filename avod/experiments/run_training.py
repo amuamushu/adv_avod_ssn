@@ -74,7 +74,6 @@ def main(args):
                         help='output dir to save checkpoints')
 
     args, unknown = parser.parse_known_args(args=args)
-
     # Parse pipeline config
     model_config, train_config, _, dataset_config = \
         config_builder.get_configs_from_pipeline_file(
@@ -92,4 +91,4 @@ def main(args):
 
 
 if __name__ == '__main__':
-    tf.compat.v1.app.run(argv=argv[2:])
+    tf.compat.v1.app.run(argv=argv)

@@ -159,4 +159,4 @@ def main(args):
 
 
 if __name__ == '__main__':
-    tf.compat.v1.app.run(argv=argv[2:])
+    tf.compat.v1.app.run(argv=argv)
