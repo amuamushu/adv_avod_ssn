@@ -6,6 +6,8 @@ import shutil
 from avod.experiments import run_evaluation, run_inference, run_training
 from utils_avod import avod_utils
 
+OUTPUT_PATH = "./outputs"
+
 def main(targets):
     '''
     Runs the main project pipeline logic, given the targets.
@@ -14,8 +16,9 @@ def main(targets):
     `main` runs the targets in order of data=>analysis=>model.
     '''
     if 'clean' in targets:
-        shutil.rmtree("./outputs")
-        os.mkdir("outputs")
+        if os.path.exists(OUTPUT_PATH):
+            shutil.rmtree(OUTPUT_PATH)
+        os.mkdir(OUTPUT_PATH)
         
     if 'test' in targets:
         with open('config/test.json') as fh:
