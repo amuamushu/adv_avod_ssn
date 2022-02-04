@@ -57,7 +57,7 @@ def main():
 
     # Overwrite this to select a specific checkpoint
     global_step = None
-    checkpoint_name = 'avod_cars_example'
+    checkpoint_name = 'pyramid_cars_with_aug_simple'
 
     # Drawing Toggles
     draw_proposals_separate = False
@@ -85,7 +85,7 @@ def main():
 
     # Setup Paths
     predictions_dir = avod.root_dir() + \
-        '/data/outputs/' + checkpoint_name + '/predictions'
+        '/outputs/' + checkpoint_name + '/predictions'
 
     proposals_and_scores_dir = predictions_dir + \
         '/proposals_and_scores/' + dataset.data_split
