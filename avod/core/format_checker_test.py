@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 
 from avod.core import format_checker as fc
-from wavedata.tools.obj_detection import obj_utils
+from wavedata.wavedata.tools.obj_detection import obj_utils
 
 
 class FormatCheckerTest(unittest.TestCase):

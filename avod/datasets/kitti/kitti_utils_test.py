@@ -3,7 +3,7 @@
 import numpy as np
 import unittest
 
-from wavedata.tools.obj_detection import obj_utils as obj_utils
+from wavedata.wavedata.tools.obj_detection import obj_utils as obj_utils
 from avod.builders.dataset_builder import DatasetBuilder
 
 

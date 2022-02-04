@@ -5,7 +5,7 @@
 # @Last Modified time: 2019-05-20 21:39:16
 import numpy as np
 import tensorflow as tf
-from wavedata.tools.core import calib_utils
+from wavedata.wavedata.tools.core import calib_utils
 
 
 import tf_slim as slim
