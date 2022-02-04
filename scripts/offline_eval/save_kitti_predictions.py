@@ -20,7 +20,7 @@ def main():
     ##############################
     # Options
     ##############################
-    checkpoint_name = 'avod_cars_example'
+    checkpoint_name = 'pyramid_cars_with_aug_simple'
 
     data_split = 'val'
 
@@ -33,7 +33,7 @@ def main():
     save_3d = True   # Save 2D and 3D predictions together
     save_alphas = True  # Save alphas (observation angles)
 
-    output_dir = '/data/kitti_avod/outputs/'
+    output_dir = './outputs/'
     # output_dir = avod.root_dir() + '/data/outputs/'
 
     # Checkpoints below this are skipped
