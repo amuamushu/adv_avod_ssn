@@ -2,6 +2,7 @@
 avod/data/*
 data/*
 logs/
+outputs
 
 *.pyc
 *.DS_Store

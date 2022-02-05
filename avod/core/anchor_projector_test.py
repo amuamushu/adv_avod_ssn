@@ -3,7 +3,7 @@ import unittest
 import numpy as np
 import tensorflow as tf
 
-from wavedata.tools.core import calib_utils
+from wavedata.wavedata.tools.core import calib_utils
 
 import avod.tests as tests
 from avod.builders.dataset_builder import DatasetBuilder

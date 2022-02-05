@@ -3,7 +3,7 @@ import numpy as np
 
 from avod.core import anchor_filter
 from avod.core import box_3d_encoder
-from wavedata.tools.core.voxel_grid import VoxelGrid
+from wavedata.wavedata.tools.core.voxel_grid import VoxelGrid
 
 
 class AnchorFilterTest(unittest.TestCase):

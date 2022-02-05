@@ -2,8 +2,8 @@ import copy
 import numpy as np
 import tensorflow as tf
 
-from wavedata.tools.obj_detection import obj_utils
-from wavedata.tools.obj_detection import evaluation
+from wavedata.wavedata.tools.obj_detection import obj_utils
+from wavedata.wavedata.tools.obj_detection import evaluation
 
 from avod.core import anchor_projector
 from avod.core import box_3d_encoder
