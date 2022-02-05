@@ -7,8 +7,8 @@ import os
 import numpy as np
 import cv2
 
-from wavedata.tools.core import calib_utils
-from wavedata.tools.obj_detection import obj_utils
+from wavedata.wavedata.tools.core import calib_utils
+from wavedata.wavedata.tools.obj_detection import obj_utils
 
 from avod.core import box_3d_encoder
 from avod.core import constants
