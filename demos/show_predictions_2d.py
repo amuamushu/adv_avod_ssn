@@ -57,8 +57,8 @@ def main():
 
     # Overwrite this to select a specific checkpoint
     global_step = None
-    checkpoint_name = 'pyramid_cars_with_aug_simple'
-
+    checkpoint_name = sys.argv[1:][0]
+    
     # Drawing Toggles
     draw_proposals_separate = False
     draw_overlaid = False
