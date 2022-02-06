@@ -40,7 +40,9 @@ def main():
     The prediction score and IoU with ground truth can be toggled on or off
     as well, shown as (score, IoU) above the detection.
     """
-    dataset_config = DatasetBuilder.copy_config(DatasetBuilder.KITTI_VAL)
+    builder = DatasetBuilder.KITTI_TEST_DATA if sys.argv[1:][0] == 'test_data' \
+        else DatasetBuilder.KITTI_VAL
+    dataset_config = DatasetBuilder.copy_config(builder)
 
     ##############################
     # Options
