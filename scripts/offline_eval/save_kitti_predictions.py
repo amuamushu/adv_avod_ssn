@@ -20,7 +20,7 @@ def main():
     ##############################
     # Options
     ##############################
-    checkpoint_name = 'pyramid_cars_with_aug_simple'
+    checkpoint_name = sys.argv[1:][0]
 
     data_split = 'val'
 
