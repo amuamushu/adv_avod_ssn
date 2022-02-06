@@ -1,5 +1,5 @@
 # AVOD for Single Source Robustness Against Adversarial Attacks.
-This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamushu)) and Ayush More ([@amore](https://github.com/amore)) over the course of roughly 6 months under the mentorship of Lily Weng. For context on our work, please take a look at our project proposal: https://docs.google.com/document/d/1Bgs7Imq6swV6FdzWi7xMLcEBQPIgxPxYTfv1dqjEyYM.
+This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamushu)) and Ayush More ([@ayushmore](https://github.com/ayushmore)) over the course of roughly 6 months under the mentorship of Lily Weng. For context on our work, please take a look at our project proposal: https://docs.google.com/document/d/1Bgs7Imq6swV6FdzWi7xMLcEBQPIgxPxYTfv1dqjEyYM.
 
 ## Setup
 ### Container Setup
