@@ -3,7 +3,7 @@ This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamus
 
 ## Setup
 ### Container Setup
-To mimic our environment, please build a docker container using the image `amytn/avod-adv:latest`. To prevent memory errors, please ensure your container has **at least 4 GB of RAM** available.
+To mimic our environment, please build a docker container using the image `amytn/avod-adv:latest`. To prevent memory errors, please ensure your container has **at least 8 GB of RAM** available. For faster runtime, including a GPU may be useful.
 
 ### Cloning the repository
 Since this reposity contains a submodule, cloning would require an additional commandline argument. 
