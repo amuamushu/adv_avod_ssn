@@ -25,13 +25,20 @@ RUN apt-get update && apt-get install \
     libboost-all-dev \
     build-essential \
     gnuplot \
-    gnuplot5
+    libqt5gui5
 
 # 3) install packages using notebook user
 # USER jovyan
 
 # RUN conda install -y scikit-learn
 COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+RUN mkdir wavedata
+COPY ./wavedata/requirements.txt ./wavedata
+RUN pip3 install -r ./wavedata/requirements.txt
+
 RUN pip3 install --upgrade \
     pip \
     setuptools \
@@ -39,12 +46,6 @@ RUN pip3 install --upgrade \
     --upgrade protobuf \
     --upgrade tf_slim \
     tensorflow-addons
-
-RUN pip install -r requirements.txt
-
-RUN mkdir wavedata
-COPY ./wavedata/requirements.txt ./wavedata
-RUN pip3 install -r ./wavedata/requirements.txt
 
 # Override command to disable running jupyter notebook at launch
 CMD ["/bin/bash"]
