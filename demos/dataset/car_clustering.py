@@ -3,7 +3,7 @@ import sys
 import numpy as np
 from sklearn.cluster import KMeans
 
-from wavedata.tools.obj_detection import obj_utils
+from wavedata.wavedata.tools.obj_detection import obj_utils
 
 from avod.builders.dataset_builder import DatasetBuilder
 from avod.core.label_cluster_utils import LabelClusterUtils

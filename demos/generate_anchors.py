@@ -5,8 +5,8 @@ import matplotlib.patches as patches
 import numpy as np
 from PIL import Image
 
-from wavedata.tools.core import calib_utils
-from wavedata.tools.visualization import vis_utils
+from wavedata.wavedata.tools.core import calib_utils
+from wavedata.wavedata.tools.visualization import vis_utils
 
 from avod.builders.dataset_builder import DatasetBuilder
 from avod.core import anchor_projector

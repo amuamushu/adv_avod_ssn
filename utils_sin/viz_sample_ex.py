@@ -10,7 +10,7 @@ import argparse
 
 import cv2
 from utils_sin.sin_utils import SINFields, genSINtoInputs, genMask2D, get_stride_sub
-from wavedata.tools.core import calib_utils
+from wavedata.wavedata.tools.core import calib_utils
 import matplotlib.pyplot as plt
 
 D_MAX = 50.0
