@@ -24,6 +24,17 @@ class DatasetBuilder(object):
         num_clusters=[2, 1, 1],
     )
 
+    KITTI_TEST_DATA = KittiDatasetConfig(
+        name="test-kitti",
+        dataset_dir=avod.root_dir() + "/test/testdata/Kitti/object",
+        data_split="val",
+        data_split_dir="training",
+        has_labels=True,
+        cluster_split="train",
+        classes=["Car"],
+        num_clusters=[2],
+    )
+
     KITTI_TRAIN = KittiDatasetConfig(
         name="kitti",
         data_split="train",
