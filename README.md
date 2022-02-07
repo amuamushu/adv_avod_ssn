@@ -11,7 +11,7 @@ Since this reposity contains a submodule, cloning would require an additional co
 Make sure to clone the reposity in your home directory so the Python paths in the Docker image match up. If the repository is cloned elsewhere, please set up the python path yourself (see [Setting up Necessary Python Paths](#setting-up-necessary-python-paths)).
 
 ```
-git clone -- recurse-submodules https://github.com/amuamushu/adv_avod_ssn.git
+git clone --recurse-submodules https://github.com/amuamushu/adv_avod_ssn.git
 ```
 
 ### Test Run
