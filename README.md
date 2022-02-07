@@ -1,9 +1,71 @@
-# AVOD for Single Source Robustness
-This repository contains the public release of the Python implementation of our paper [**On Single Source Robustness in Deep Fusion Models**](https://papers.nips.cc/paper/8728-on-single-source-robustness-in-deep-fusion-models), NeurIPS 2019. We investigate learning fusion algorithms that are robust against noise added to a single source. A recent open-sourced 3D object detector [Aggregate View Object Detection (AVOD)](https://github.com/kujason/avod) is selected as a baseline algorithm to test our strategies for achieving robustness, and we modified the original implementation of the AVOD.
+# AVOD for Single Source Robustness Against Adversarial Attacks.
+This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamushu)) and Ayush More ([@ayushmore](https://github.com/ayushmore)) over the course of roughly 6 months under the mentorship of Lily Weng. For context on our work, please take a look at our project proposal: https://docs.google.com/document/d/1Bgs7Imq6swV6FdzWi7xMLcEBQPIgxPxYTfv1dqjEyYM.
 
-[Taewan Kim](https://sites.google.com/a/utexas.edu/twankim), [Joydeep Ghosh](https://www.ideal.ece.utexas.edu/ghosh/), The University of Texas at Austin
+## Setup
+### Container Setup
+To mimic our environment, please build a docker container using the image `amytn/avod-adv:latest`. To prevent memory errors, please ensure your container has **at least 16 GB of RAM** available. For faster runtime, including a GPU may be useful.
 
-If you use this code, please cite our paper:
+### Cloning the repository
+Since this reposity contains a submodule, cloning would require an additional commandline argument. 
+
+Make sure to clone the reposity in your home directory so the Python paths in the Docker image match up. If the repository is cloned elsewhere, please set up the python path yourself (see [Setting up Necessary Python Paths](#setting-up-necessary-python-paths)).
+
+```
+git clone -- recurse-submodules https://github.com/amuamushu/adv_avod_ssn.git
+```
+
+### Test Run
+```
+python3 run.py [test] [clean]
+```
+#### `test` target: 
+Runs training and inference on test data found under `test/testdata` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `test_data`.
+
+#### `clean` target: 
+Deletes all files in the `outputs` folder.
+
+#### Configuration Files: 
+The configuration files used can be found under `config/test.json`. 
+
+**Here are what the configurations mean:**
+
+`pipeline_config`: Specifies the path to the model configurations (batch size, number of steps, learning rate, number of iterations, etc).
+
+`data_split`: Can be `train`, `val`, or `test`. Whichever keyword is specified determines which samples are used.
+
+`output_dir`: Path to where the results and AP scores are written to.
+
+`ckpt_indices`: This value specifies which model checkpoint to use for inference. 
+  - Every couple of steps during training, the current trained model is saved to a checkpoint. 
+
+### Viewing Results
+#### AP Scores: 
+The AP scores can be found under `outputs/<checkpoint_name>/offline_eval/results` where the 3 values provided for each test corresponds to easy, medium, and hard respectively.
+
+**Here is an exmaple of what the AP Scores look like**:
+```
+car_detection AP: 89.973267 87.620293 80.301704
+car_detection_BEV AP: 89.292168 86.383148 79.538277
+car_heading_BEV AP: 89.177887 85.891479 78.938744
+car_detection_3D AP: 77.332970 67.945251 66.929985
+car_heading_3D AP: 77.288345 67.749474 66.543098
+```
+
+#### Visualization with bounding boxes, IoU scores, and confidence level: 
+Run the below code to generate bounding boxes on top of the images used during inference. Images will be saved to `outputs/<checkpoint_name>/predictions/images_2d`
+
+```
+python3 demos/show_predictions_2d.py <checkpoint_name>
+```
+
+**Here is an example of a generated image**:
+![000152](https://user-images.githubusercontent.com/35519361/152208158-833ca90f-911a-4ab5-a846-e167cfc2e1a3.png)
+
+## The dataset
+The dataset we will be using is the [KITTI dataset](http://www.cvlibs.net/datasets/kitti/). For the dataset and mini-batch setup, please follow the steps listed in the [AVOD repository](https://github.com/kujason/avod#dataset). If you are not using the sample data in `test/testdata`, preparing the data is necessary for training and inference.
+
+## References
+This project builds off of Kim, Taewan and Ghosh, Joydeep's work on "Single Source Robustness in Deep Fusion Models." In their GitHub repository (https://github.com/twankim/avod_ssn), they incorporate single source noise into the inputs of the AVOD 3D object detection model. We expand on their work and code by incorporating adversarial noise, rather than Gaussian noise, into the input images.
 ```
 @inproceedings{kim2019single,
   title={On Single Source Robustness in Deep Fusion Models},
@@ -14,98 +76,28 @@ If you use this code, please cite our paper:
 }
 ```
 
-## Getting Started (Setup for AVOD)
-Implemented and tested on Ubuntu 16.04 with Python 3.5 and Tensorflow 1.12.0.
-(Similar to required steps of AVOD)
-
-1. Clone this repo
-```bash
-git clone git@github.com:twankim/avod_ssn.git --recurse-submodules
+We also relied on the documentation of the original AVOD code (https://github.com/kujason/avod) for setting up the model and data as well as understanding our results.
+```
+@article{ku2018joint, 
+  title={Joint 3D Proposal Generation and Object Detection from View Aggregation}, 
+  author={Ku, Jason and Mozifian, Melissa and Lee, Jungwook and Harakeh, Ali and Waslander, Steven}, 
+  journal={IROS}, 
+  year={2018}
+}
 ```
 
-2. Install Python dependencies
-```bash
-cd avod_ssn
-pip3 install -r requirements.txt
-pip3 install tensorflow-gpu==1.3.0 (or tensorflow-gpu==1.12.0)
+We referred to the KITTI dataset webiste (http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) and its related papers to better understand our dataset.
+```
+A. Geiger, P. Lenz and R. Urtasun, "Are we ready for autonomous driving? The KITTI vision benchmark suite," 
+2012 IEEE Conference on Computer Vision and Pattern Recognition, 2012, pp. 3354-3361, doi: 10.1109/CVPR.2012.6248074. 
+http://www.cvlibs.net/publications/Geiger2012CVPR.pdf
 ```
 
-3. Add `avod_ssn (top level)` and `wavedata` to your PYTHONPATH (Not required after installation)
-```bash
-# For virtualenvwrapper users
-add2virtualenv .
-add2virtualenv wavedata
+
+## Appendix
+### Setting Up Necessary Python Paths
+Run these two commands to set the Python paths for `avod_ssn` and `wavedata`:
 ```
-
-```bash
-# For nonvirtualenv users
-export PYTHONPATH=$PYTHONPATH:'/path/to/avod_ssn'
-export PYTHONPATH=$PYTHONPATH:'/path/to/avod_ssn/wavedata'
+export PYTHONPATH=$PYTHONPATH:'<path to avod>'
+export PYTHONPATH=$PYTHONPATH:'<path to avod>'
 ```
-
-4. Compile integral image library in wavedata
-```bash
-sh scripts/install/build_integral_image_lib.bash
-```
-
-5. AVOD uses Protobufs to configure model and training parameters. Before the framework can be used, the protos must be compiled (from top level avod folder):
-```bash
-sh avod/protos/run_protoc.sh
-```
-
-Alternatively, you can run the `protoc` command directly:
-```bash
-protoc avod/protos/*.proto --python_out=.
-```
-
-### Dataset
-Follow the Dataset and Mini-batch Generation setups of the original [AVOD repository](https://github.com/kujason/avod) to prepare for training and inference.
-
-## Scripts and Configs
-AVOD provides several options in fusion strategies: (i) fusion methods *(mean/concat)* in RPN, (ii) fusion methods *(mean/concat/max)* and fusion types *(early/late/deep)* in fully_connected layers. Our implementation uses *early fusion* type in fusion fc_layers, and one more fusion method *LEL(latent esemble layer)* is added to the list of fusion methods for both RPN and fc layers. Our scripts and configs assume that the 3D detector is detecting the *Car* class of KITTI dataset. 
-
-### Types of Noise/Corruption
-*Gaussian noise* and *downsampling* methods are tested in our implementation. Levels and types of corruption can be controlled by an argument `sin_type` and `sin_level` in config files, which will be passed to the python file `utils_sin/sin_utils.py`.
-
-![Corrupted samples](images/fig_corrupted_samples.png)
-(Different types of corruption added to input sources)
-
-### Models Trained on Clean Data
-A subdirectory `avod_ssn/scripts/sin_test` includes all the required scripts for our experimental results, and corresponding config files are located at `avod_ssn/avod/configs`. (Any subfolder or file name includes a term *simple* is for the model using an element-wise mean fusion method.) 
-
-To train the model on clean data, see the script files `scripts/sin_test/rand_5/{run_pyramid_cars_with_aug_simple.sh,run_pyramid_cars_with_aug_concat.sh,run_pyramid_cars_with_aug_lel.sh}`, which include following processes:
-1. Train a model on clean data
-2. Evaluate the model on validation set (clean data)
-3. Evaluate the model on validation set (Gaussian single source noise is applied)
-4. Evaluate the model on validation set (Gaussian all source noise is applied)
-
-(For the downsampling corruption, see the files at `scripts/sin_test/lowres_4`.)
-
-### Models Trained on Corrupted Data
-There are two types of strategies that we can use to train models for corrupted data. First, the subdirectory `scripts/sin_test/rand_5` provides scripts for *fine-tuning* the models with noisy data. Details can be found in our paper. Then, `scripts/sin_test/rand_5_full` provides the scripts for training the whole model from the scratch with corrupted data.
-
-### Viewing Results
-All results should be saved in `/data/ktti_avod/object/outputs`. Here you should see `offline_eval` which provides text files saving different AP scores per predefined checkpoints of a model. You can also generate visualization of the corrupted sources by running a code `avod_ssn/utils_sin/viz_sample_ex.py`.
-
-## LICENSE
-Copyright (c) 2019 [Taewan Kim](https://sites.google.com/a/utexas.edu/twankim)
-
-(*Original AVOD (2018): [Jason Ku](https://github.com/kujason), [Melissa Mozifian](https://github.com/melfm), [Ali Harakeh](www.aharakeh.com), [Steven L. Waslander](http://wavelab.uwaterloo.ca)*)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
