@@ -86,7 +86,7 @@ We also relied on the documentation of the original AVOD code (https://github.co
 }
 ```
 
-We referred to the KITTI dataset webiste (http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) and its related papers to better understand our dataset.
+We referred to the KITTI dataset website (http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) and its related papers to better understand our dataset.
 ```
 A. Geiger, P. Lenz and R. Urtasun, "Are we ready for autonomous driving? The KITTI vision benchmark suite," 
 2012 IEEE Conference on Computer Vision and Pattern Recognition, 2012, pp. 3354-3361, doi: 10.1109/CVPR.2012.6248074. 
