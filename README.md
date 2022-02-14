@@ -1,6 +1,8 @@
 # AVOD for Single Source Robustness Against Adversarial Attacks.
 This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamushu)) and Ayush More ([@ayushmore](https://github.com/ayushmore)) over the course of roughly 6 months under the mentorship of Lily Weng. For context on our work, please take a look at our project proposal: https://docs.google.com/document/d/1Bgs7Imq6swV6FdzWi7xMLcEBQPIgxPxYTfv1dqjEyYM.
 
+Visual Presentation: https://ayushmore.github.io/
+
 ## Setup
 ### Container Setup
 To mimic our environment, please build a docker container using the image `amytn/avod-adv:latest`. To prevent memory errors, please ensure your container has **at least 16 GB of RAM** available. For faster runtime, including a GPU may be useful.
