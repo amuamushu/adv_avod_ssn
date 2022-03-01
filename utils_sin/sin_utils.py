@@ -14,7 +14,7 @@ _USE_GLOBAL_STEP = 0
 
 class SINFields:
     VALID_SIN_TYPES = ['rand','rect','vert','lowres']
-    SIN_INPUT_NAMES = ['image','lidar']
+    SIN_INPUT_NAMES = ['image']
     VALID_MAX_MAGTD = {'image': 255,
                        'lidar': 0.2}
     SIN_LEVEL_MAX = 10.0
