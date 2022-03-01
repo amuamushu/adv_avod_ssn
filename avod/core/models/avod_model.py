@@ -241,6 +241,7 @@ class AvodModel(model.DetectionModel):
         avod_layers_config = self.model_config.layers_config.avod_config
 
         if not self._is_training:
+            print("OKOKOKOKO ADVERSARIAL EX")
             # predict normally
             fc_output_layers = \
                 avod_fc_layers_builder.build(
@@ -289,7 +290,7 @@ class AvodModel(model.DetectionModel):
             delta = epsilon * tf.sign(tf.gradients(cls_loss, img_rois))   
             img_rois = img_rois + delta[0]
             # image rois are now perturbed  
-            
+
         fc_output_layers = \
             avod_fc_layers_builder.build(
                 layers_config=avod_layers_config,
