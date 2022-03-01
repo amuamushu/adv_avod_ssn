@@ -17,5 +17,5 @@ echo "INFERENCE CLEAN test adv"
 python avod/experiments/run_inference.py \
         --experiment_config=${CONFIG_MAIN} \
         --data_split='val' \
-        --ckpt_indices ${EVAL_CKPTS}
-        # --output_dir=${OUTPUT_DIR} \        
+        --ckpt_indices ${EVAL_CKPTS} \
+        --output_dir=${OUTPUT_DIR}      
