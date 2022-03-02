@@ -285,10 +285,12 @@ class AvodModel(model.DetectionModel):
                 off_value=(self._config.label_smoothing_epsilon /
                         self.dataset.num_classes))
 
-            epsilon = .2
+            epsilon = .2 # what is the is the sigma (roughly equal to 3 sigma, for a fair comparison;check again on their paper)
             cls_loss = avod_loss_builder._get_cls_loss(self, mb_classifications_logits, mb_classification_gt)
             delta = epsilon * tf.sign(tf.gradients(cls_loss, img_rois))   
+            max_val = tf.math.reduce_max(img_rois, axis=None, keepdims=False, name=None)
             img_rois = img_rois + delta[0]
+            img_rois = tf.clip_by_value(img_rois, 0, max_val)         
             # image rois are now perturbed  
 
         fc_output_layers = \
