@@ -9,7 +9,6 @@ KEY_OFFSETS = 'offsets'
 KEY_ANGLE_VECTORS = 'angle_vectors'
 KEY_ENDPOINTS = 'end_points'
 
-first_time = True
 def build(layers_config,
           input_rois, input_weights,
           num_final_classes, box_rep,
@@ -30,11 +29,10 @@ def build(layers_config,
     Returns:
         fc_output_layers: Output layer dictionary
     """
-    global first_time
     # Default all output layers to None
     cls_logits = offsets = angle_vectors = end_points = None
 
-    with tf.compat.v1.variable_scope('box_predictor', reuse=not first_time) as sc:
+    with tf.compat.v1.variable_scope('box_predictor', reuse=tf.compat.v1.AUTO_REUSE) as sc:
         end_points_collection = sc.name + '_end_points'
 
         fc_layers_type = layers_config.WhichOneof('fc_layers')
@@ -81,6 +79,4 @@ def build(layers_config,
     fc_output_layers[KEY_ANGLE_VECTORS] = angle_vectors
     fc_output_layers[KEY_ENDPOINTS] = end_points
 
-    if first_time:
-        first_time = False
     return fc_output_layers
