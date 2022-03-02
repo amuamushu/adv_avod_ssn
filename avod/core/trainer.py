@@ -52,6 +52,7 @@ def train(model, train_config):
             if len(train_config.pretrained_ckpt) != 0:
                 # Default value is blank string, ""
                 pretrained_ckpt = train_config.pretrained_ckpt
+        # TODO: Update use pretrained checkpoints for train adversarial
 
     model = model
     train_config = train_config

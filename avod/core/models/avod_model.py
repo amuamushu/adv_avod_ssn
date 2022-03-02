@@ -240,7 +240,7 @@ class AvodModel(model.DetectionModel):
         # Fully connected layers (Box Predictor)
         avod_layers_config = self.model_config.layers_config.avod_config
 
-        if not self._is_training:
+        if not self._is_training: # TODO: Update to be is_adversarial --> for infernece (Ok because all of infernece is etheir adversarial or clean) and training (ok because use pretrained checkpoints such that remaining training is all adversarial)
             print("OKOKOKOKO ADVERSARIAL EX")
             # predict normally
             fc_output_layers = \
@@ -285,7 +285,7 @@ class AvodModel(model.DetectionModel):
                 off_value=(self._config.label_smoothing_epsilon /
                         self.dataset.num_classes))
 
-            epsilon = .2 # what is the is the sigma (roughly equal to 3 sigma, for a fair comparison;check again on their paper)
+            epsilon = .3 # what is the is the sigma (roughly equal to 3 sigma, for a fair comparison;check again on their paper)
             cls_loss = avod_loss_builder._get_cls_loss(self, mb_classifications_logits, mb_classification_gt)
             delta = epsilon * tf.sign(tf.gradients(cls_loss, img_rois))   
             max_val = tf.math.reduce_max(img_rois, axis=None, keepdims=False, name=None)
