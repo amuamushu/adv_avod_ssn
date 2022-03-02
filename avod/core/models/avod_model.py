@@ -240,7 +240,7 @@ class AvodModel(model.DetectionModel):
         # Fully connected layers (Box Predictor)
         avod_layers_config = self.model_config.layers_config.avod_config
 
-        if not self._is_training: # TODO: Update to be is_adversarial --> for infernece (Ok because all of infernece is etheir adversarial or clean) and training (ok because use pretrained checkpoints such that remaining training is all adversarial)
+        if self._config.is_adversarial: # TODO: Update to be is_adversarial --> for infernece (Ok because all of infernece is etheir adversarial or clean) and training (ok because use pretrained checkpoints such that remaining training is all adversarial)
             print("OKOKOKOKO ADVERSARIAL EX")
             # predict normally
             fc_output_layers = \
