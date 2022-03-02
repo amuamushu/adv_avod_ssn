@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x17\x61vod/protos/model.proto\x12\x0b\x61vod.protos\x1a\x18\x61vod/protos/layers.proto\"\x88\x04\n\x0bModelConfig\x12\x1e\n\nmodel_name\x18\x01 \x01(\t:\navod_model\x12(\n\x0f\x63heckpoint_name\x18\x02 \x01(\t:\x0f\x64\x65tection_model\x12.\n\x0cpaths_config\x18\x03 \x01(\x0b\x32\x18.avod.protos.PathsConfig\x12.\n\x0cinput_config\x18\x04 \x02(\x0b\x32\x18.avod.protos.InputConfig\x12*\n\nrpn_config\x18\x05 \x02(\x0b\x32\x16.avod.protos.RpnConfig\x12,\n\x0b\x61vod_config\x18\x06 \x02(\x0b\x32\x17.avod.protos.AvodConfig\x12\x1f\n\x17label_smoothing_epsilon\x18\x07 \x02(\x02\x12\x1b\n\x13\x65xpand_proposals_xz\x18\x08 \x02(\x02\x12\x1f\n\x17path_drop_probabilities\x18\t \x03(\x02\x12\x1c\n\x14train_on_all_samples\x18\n \x02(\x08\x12\x18\n\x10\x65val_all_samples\x18\x0b \x02(\x08\x12\x30\n\rlayers_config\x18\x0c \x02(\x0b\x32\x19.avod.protos.LayersConfig\x12,\n\x0bloss_config\x18\r \x02(\x0b\x32\x17.avod.protos.LossConfig\"G\n\x0bPathsConfig\x12\x16\n\x0e\x63heckpoint_dir\x18\x01 \x01(\t\x12\x0e\n\x06logdir\x18\x02 \x01(\t\x12\x10\n\x08pred_dir\x18\x03 \x01(\t\"\x9e\x01\n\x0bInputConfig\x12\x17\n\nbev_dims_h\x18\x01 \x01(\x05:\x03\x37\x30\x30\x12\x17\n\nbev_dims_w\x18\x02 \x01(\x05:\x03\x38\x30\x30\x12\x14\n\tbev_depth\x18\x03 \x01(\x05:\x01\x36\x12\x17\n\nimg_dims_h\x18\x04 \x01(\x05:\x03\x34\x38\x30\x12\x18\n\nimg_dims_w\x18\x05 \x01(\x05:\x04\x31\x35\x39\x30\x12\x14\n\timg_depth\x18\x06 \x01(\x05:\x01\x33\"\x9d\x01\n\tRpnConfig\x12\"\n\x1arpn_proposal_roi_crop_size\x18\x01 \x02(\x05\x12\x19\n\x11rpn_fusion_method\x18\x02 \x02(\t\x12\x1a\n\x12rpn_train_nms_size\x18\x03 \x02(\x05\x12\x19\n\x11rpn_test_nms_size\x18\x04 \x02(\x05\x12\x1a\n\x12rpn_nms_iou_thresh\x18\x05 \x02(\x02\"\xa7\x01\n\nAvodConfig\x12#\n\x1b\x61vod_proposal_roi_crop_size\x18\x01 \x02(\x05\x12\x1f\n\x17\x61vod_positive_selection\x18\x03 \x02(\t\x12\x15\n\ravod_nms_size\x18\x04 \x02(\x05\x12\x1b\n\x13\x61vod_nms_iou_thresh\x18\x05 \x02(\x02\x12\x1f\n\x17\x61vod_box_representation\x18\x06 \x02(\t\"W\n\nLossConfig\x12\x17\n\x0freg_loss_weight\x18\x01 \x02(\x02\x12\x17\n\x0f\x61ng_loss_weight\x18\x02 \x02(\x02\x12\x17\n\x0f\x63ls_loss_weight\x18\x03 \x02(\x02'
+  serialized_pb=b'\n\x17\x61vod/protos/model.proto\x12\x0b\x61vod.protos\x1a\x18\x61vod/protos/layers.proto\"\xa7\x04\n\x0bModelConfig\x12\x1e\n\nmodel_name\x18\x01 \x01(\t:\navod_model\x12(\n\x0f\x63heckpoint_name\x18\x02 \x01(\t:\x0f\x64\x65tection_model\x12.\n\x0cpaths_config\x18\x03 \x01(\x0b\x32\x18.avod.protos.PathsConfig\x12.\n\x0cinput_config\x18\x04 \x02(\x0b\x32\x18.avod.protos.InputConfig\x12*\n\nrpn_config\x18\x05 \x02(\x0b\x32\x16.avod.protos.RpnConfig\x12,\n\x0b\x61vod_config\x18\x06 \x02(\x0b\x32\x17.avod.protos.AvodConfig\x12\x1f\n\x17label_smoothing_epsilon\x18\x07 \x02(\x02\x12\x1b\n\x13\x65xpand_proposals_xz\x18\x08 \x02(\x02\x12\x1f\n\x17path_drop_probabilities\x18\t \x03(\x02\x12\x1c\n\x14train_on_all_samples\x18\n \x02(\x08\x12\x18\n\x10\x65val_all_samples\x18\x0b \x02(\x08\x12\x30\n\rlayers_config\x18\x0c \x02(\x0b\x32\x19.avod.protos.LayersConfig\x12,\n\x0bloss_config\x18\r \x02(\x0b\x32\x17.avod.protos.LossConfig\x12\x1d\n\x0eis_adversarial\x18\x0e \x01(\x08:\x05\x66\x61lse\"G\n\x0bPathsConfig\x12\x16\n\x0e\x63heckpoint_dir\x18\x01 \x01(\t\x12\x0e\n\x06logdir\x18\x02 \x01(\t\x12\x10\n\x08pred_dir\x18\x03 \x01(\t\"\x9e\x01\n\x0bInputConfig\x12\x17\n\nbev_dims_h\x18\x01 \x01(\x05:\x03\x37\x30\x30\x12\x17\n\nbev_dims_w\x18\x02 \x01(\x05:\x03\x38\x30\x30\x12\x14\n\tbev_depth\x18\x03 \x01(\x05:\x01\x36\x12\x17\n\nimg_dims_h\x18\x04 \x01(\x05:\x03\x34\x38\x30\x12\x18\n\nimg_dims_w\x18\x05 \x01(\x05:\x04\x31\x35\x39\x30\x12\x14\n\timg_depth\x18\x06 \x01(\x05:\x01\x33\"\x9d\x01\n\tRpnConfig\x12\"\n\x1arpn_proposal_roi_crop_size\x18\x01 \x02(\x05\x12\x19\n\x11rpn_fusion_method\x18\x02 \x02(\t\x12\x1a\n\x12rpn_train_nms_size\x18\x03 \x02(\x05\x12\x19\n\x11rpn_test_nms_size\x18\x04 \x02(\x05\x12\x1a\n\x12rpn_nms_iou_thresh\x18\x05 \x02(\x02\"\xa7\x01\n\nAvodConfig\x12#\n\x1b\x61vod_proposal_roi_crop_size\x18\x01 \x02(\x05\x12\x1f\n\x17\x61vod_positive_selection\x18\x03 \x02(\t\x12\x15\n\ravod_nms_size\x18\x04 \x02(\x05\x12\x1b\n\x13\x61vod_nms_iou_thresh\x18\x05 \x02(\x02\x12\x1f\n\x17\x61vod_box_representation\x18\x06 \x02(\t\"W\n\nLossConfig\x12\x17\n\x0freg_loss_weight\x18\x01 \x02(\x02\x12\x17\n\x0f\x61ng_loss_weight\x18\x02 \x02(\x02\x12\x17\n\x0f\x63ls_loss_weight\x18\x03 \x02(\x02'
   ,
   dependencies=[avod_dot_protos_dot_layers__pb2.DESCRIPTOR,])
 
@@ -126,6 +126,13 @@ _MODELCONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='is_adversarial', full_name='avod.protos.ModelConfig.is_adversarial', index=13,
+      number=14, type=8, cpp_type=7, label=1,
+      has_default_value=True, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -139,7 +146,7 @@ _MODELCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=67,
-  serialized_end=587,
+  serialized_end=618,
 )
 
 
@@ -184,8 +191,8 @@ _PATHSCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=589,
-  serialized_end=660,
+  serialized_start=620,
+  serialized_end=691,
 )
 
 
@@ -251,8 +258,8 @@ _INPUTCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=663,
-  serialized_end=821,
+  serialized_start=694,
+  serialized_end=852,
 )
 
 
@@ -311,8 +318,8 @@ _RPNCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=824,
-  serialized_end=981,
+  serialized_start=855,
+  serialized_end=1012,
 )
 
 
@@ -371,8 +378,8 @@ _AVODCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=984,
-  serialized_end=1151,
+  serialized_start=1015,
+  serialized_end=1182,
 )
 
 
@@ -417,8 +424,8 @@ _LOSSCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1153,
-  serialized_end=1240,
+  serialized_start=1184,
+  serialized_end=1271,
 )
 
 _MODELCONFIG.fields_by_name['paths_config'].message_type = _PATHSCONFIG
