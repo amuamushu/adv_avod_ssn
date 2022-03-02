@@ -112,6 +112,8 @@ def get_configs_from_pipeline_file(pipeline_config_path,
                 eval_config.sin_type,
                 eval_config.sin_level,
                 eval_config.sin_repeat)
+        elif model_config.is_adversarial:
+            paths_config.pred_dir += '_adv'         
 
     if is_training:
         # Copy the config to the experiments folder
