@@ -37,4 +37,6 @@ message EvalConfig {
 
     // Evaluate all input noise mode
     optional bool do_eval_ain = 11  [default = false];
+
+    optional string pretrained_ckpt = 12;
 }

@@ -70,7 +70,8 @@ class Evaluator:
         self.full_model = isinstance(self.model, AvodModel)
 
         self.paths_config = self.model_config.paths_config
-        self.checkpoint_dir = self.paths_config.checkpoint_dir
+        self.checkpoint_dir = self.eval_config.pretrained_ckpt if \
+            self.eval_config.pretrained_ckpt else self.paths_config.checkpoint_dir
 
         self.skip_evaluated_checkpoints = skip_evaluated_checkpoints
         self.eval_wait_interval = eval_wait_interval
