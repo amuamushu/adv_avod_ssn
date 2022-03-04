@@ -240,6 +240,58 @@ class AvodModel(model.DetectionModel):
         # Fully connected layers (Box Predictor)
         avod_layers_config = self.model_config.layers_config.avod_config
 
+        if self._config.is_adversarial: 
+            # predict normally
+            fc_output_layers = \
+                avod_fc_layers_builder.build(
+                    layers_config=avod_layers_config,
+                    input_rois=[bev_rois, img_rois],
+                    input_weights=[bev_mask, img_mask],
+                    num_final_classes=self._num_final_classes,
+                    box_rep=self._box_rep,
+                    top_anchors=top_anchors,
+                    ground_plane=ground_plane,
+                    is_training=self._is_training)
+
+            # Added to get predicted values
+            all_cls_logits = \
+                fc_output_layers[avod_fc_layers_builder.KEY_CLS_LOGITS]
+            all_offsets = fc_output_layers[avod_fc_layers_builder.KEY_OFFSETS]
+
+            anchors_gt = rpn_model.placeholders[RpnModel.PL_LABEL_ANCHORS]
+            bev_anchor_boxes_gt, _ = anchor_projector.project_to_bev(
+                anchors_gt, self.dataset.kitti_utils.bev_extents)
+
+            bev_anchor_boxes_gt_tf_order = \
+                anchor_projector.reorder_projected_boxes(bev_anchor_boxes_gt)
+
+            anchor_box_list_gt = box_list.BoxList(bev_anchor_boxes_gt_tf_order)
+            anchor_box_list = box_list.BoxList(bev_proposal_boxes_tf_order)
+
+            mb_mask, mb_class_label_indices, mb_gt_indices = \
+                self.sample_mini_batch(
+                    anchor_box_list_gt=anchor_box_list_gt,
+                    anchor_box_list=anchor_box_list,
+                    class_labels=class_labels)
+
+            mb_classifications_logits = tf.boolean_mask(
+                tensor=all_cls_logits, mask=mb_mask)
+
+            mb_classification_gt = tf.one_hot(
+                mb_class_label_indices,
+                depth=self._num_final_classes,
+                on_value=1.0 - self._config.label_smoothing_epsilon,
+                off_value=(self._config.label_smoothing_epsilon /
+                        self.dataset.num_classes))
+
+            epsilon = .3
+            cls_loss = avod_loss_builder._get_cls_loss(self, mb_classifications_logits, mb_classification_gt)
+            delta = epsilon * tf.sign(tf.gradients(cls_loss, img_rois))   
+            max_val = tf.math.reduce_max(img_rois, axis=None, keepdims=False, name=None)
+            img_rois = img_rois + delta[0]
+            img_rois = tf.clip_by_value(img_rois, 0, max_val)         
+            # image rois are now perturbed  
+
         fc_output_layers = \
             avod_fc_layers_builder.build(
                 layers_config=avod_layers_config,

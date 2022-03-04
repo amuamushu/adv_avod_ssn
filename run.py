@@ -28,6 +28,14 @@ def main(targets):
         avod_utils.run_main_with_command_line_args(run_training, **(test_config['training']))
         avod_utils.run_main_with_command_line_args(run_inference, **(test_config['inference']))
 
+    if 'adv-test' in targets:
+        with open('config/test_adv.json') as fh:
+            test_config = json.load(fh)
+
+        # make the data target
+        avod_utils.run_main_with_command_line_args(run_training, **(test_config['training']))
+        avod_utils.run_main_with_command_line_args(run_inference, **(test_config['inference']))        
+
     return
 
 

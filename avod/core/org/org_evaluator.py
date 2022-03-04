@@ -95,7 +95,8 @@ class Evaluator:
                 # Copy kitti native eval code into the predictions folder
                 evaluator_utils.copy_kitti_native_code(
                     self.model_config.checkpoint_name,
-                    output_dir=self.output_dir)
+                    output_dir=self.output_dir,
+                    is_adversarial=self.model_config.is_adversarial)
 
         allow_gpu_mem_growth = self.eval_config.allow_gpu_mem_growth
         if allow_gpu_mem_growth:
@@ -422,7 +423,8 @@ class Evaluator:
         if self.do_kitti_native_eval:
             evaluator_utils.copy_kitti_native_code(
                 self.model_config.checkpoint_name,
-                output_dir=self.output_dir)
+                output_dir=self.output_dir,
+                is_adversarial=self.model_config.is_adversarial)
 
         if self.skip_evaluated_checkpoints:
             already_evaluated_ckpts = self.get_evaluated_ckpts(
@@ -1199,10 +1201,10 @@ class Evaluator:
         # Create a separate processes to run the native evaluation
         native_eval_proc = Process(
             target=evaluator_utils.run_kitti_native_script, args=(
-                checkpoint_name, kitti_score_threshold, global_step,self.output_dir))
+                checkpoint_name, kitti_score_threshold, global_step,self.output_dir, self.model_config.is_adversarial))
         native_eval_proc_05_iou = Process(
             target=evaluator_utils.run_kitti_native_script_with_05_iou,
-            args=(checkpoint_name, kitti_score_threshold, global_step,self.output_dir))
+            args=(checkpoint_name, kitti_score_threshold, global_step,self.output_dir, self.model_config.is_adversarial))
         # Don't call join on this cuz we do not want to block
         # this will cause one zombie process - should be fixed later.
         native_eval_proc.start()

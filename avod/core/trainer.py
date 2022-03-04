@@ -48,7 +48,7 @@ def train(model, train_config):
     else:
         # Pretrained_ckpt is only used for handling noise in training
         if train_config.do_train_both or train_config.do_train_sin \
-            or train_config.do_train_sin_alt or train_config.do_train_sin_fast:
+            or train_config.do_train_sin_alt or train_config.do_train_sin_fast or model._config.is_adversarial:
             if len(train_config.pretrained_ckpt) != 0:
                 # Default value is blank string, ""
                 pretrained_ckpt = train_config.pretrained_ckpt

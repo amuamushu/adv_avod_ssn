@@ -70,7 +70,8 @@ class Evaluator:
         self.full_model = isinstance(self.model, AvodModel)
 
         self.paths_config = self.model_config.paths_config
-        self.checkpoint_dir = self.paths_config.checkpoint_dir
+        self.checkpoint_dir = self.eval_config.pretrained_ckpt if \
+            self.eval_config.pretrained_ckpt else self.paths_config.checkpoint_dir
 
         self.skip_evaluated_checkpoints = skip_evaluated_checkpoints
         self.eval_wait_interval = eval_wait_interval
@@ -116,7 +117,8 @@ class Evaluator:
                     sin_type=self.sin_type,
                     sin_level=self.sin_level,
                     sin_repeat=self.sin_repeat,
-                    sin_input_names=SINFields.SIN_INPUT_NAMES)
+                    sin_input_names=SINFields.SIN_INPUT_NAMES,
+                    is_adversarial=self.model_config.is_adversarial)
 
         allow_gpu_mem_growth = self.eval_config.allow_gpu_mem_growth
         if allow_gpu_mem_growth:
@@ -1326,13 +1328,13 @@ class Evaluator:
         # Create a separate processes to run the native evaluation
         native_eval_proc = Process(
             target=evaluator_utils.run_kitti_native_script, 
-            args=(checkpoint_name, kitti_score_threshold, global_step,
+            args=(checkpoint_name, kitti_score_threshold, global_step, self.model_config.is_adversarial,
                   self.output_dir, self.do_eval_sin, self.do_eval_ain,
                   self.sin_type, self.sin_level, self.sin_repeat, sin_input_name, 
                   idx_repeat, self.dataset_config.data_split))
         native_eval_proc_05_iou = Process(
             target=evaluator_utils.run_kitti_native_script_with_05_iou,
-            args=(checkpoint_name, kitti_score_threshold, global_step,
+            args=(checkpoint_name, kitti_score_threshold, global_step, self.model_config.is_adversarial,
                   self.output_dir, self.do_eval_sin, self.do_eval_ain,
                   self.sin_type, self.sin_level, self.sin_repeat, sin_input_name, 
                   idx_repeat, self.dataset_config.data_split))

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x16\x61vod/protos/eval.proto\x12\x0b\x61vod.protos\"\xbf\x02\n\nEvalConfig\x12\x1a\n\reval_interval\x18\x01 \x01(\r:\x03\x35\x30\x30\x12\x16\n\teval_mode\x18\x02 \x01(\t:\x03val\x12\x14\n\x0c\x63kpt_indices\x18\x03 \x03(\x05\x12!\n\x13\x65valuate_repeatedly\x18\x04 \x01(\x08:\x04true\x12#\n\x14\x61llow_gpu_mem_growth\x18\x05 \x01(\x08:\x05\x66\x61lse\x12\"\n\x15kitti_score_threshold\x18\x06 \x01(\x02:\x03\x30.1\x12\x1a\n\x0b\x64o_eval_sin\x18\x07 \x01(\x08:\x05\x66\x61lse\x12\x14\n\tsin_level\x18\x08 \x01(\x02:\x01\x35\x12\x16\n\x08sin_type\x18\t \x01(\t:\x04rand\x12\x15\n\nsin_repeat\x18\n \x01(\x05:\x01\x31\x12\x1a\n\x0b\x64o_eval_ain\x18\x0b \x01(\x08:\x05\x66\x61lse'
+  serialized_pb=b'\n\x16\x61vod/protos/eval.proto\x12\x0b\x61vod.protos\"\xd8\x02\n\nEvalConfig\x12\x1a\n\reval_interval\x18\x01 \x01(\r:\x03\x35\x30\x30\x12\x16\n\teval_mode\x18\x02 \x01(\t:\x03val\x12\x14\n\x0c\x63kpt_indices\x18\x03 \x03(\x05\x12!\n\x13\x65valuate_repeatedly\x18\x04 \x01(\x08:\x04true\x12#\n\x14\x61llow_gpu_mem_growth\x18\x05 \x01(\x08:\x05\x66\x61lse\x12\"\n\x15kitti_score_threshold\x18\x06 \x01(\x02:\x03\x30.1\x12\x1a\n\x0b\x64o_eval_sin\x18\x07 \x01(\x08:\x05\x66\x61lse\x12\x14\n\tsin_level\x18\x08 \x01(\x02:\x01\x35\x12\x16\n\x08sin_type\x18\t \x01(\t:\x04rand\x12\x15\n\nsin_repeat\x18\n \x01(\x05:\x01\x31\x12\x1a\n\x0b\x64o_eval_ain\x18\x0b \x01(\x08:\x05\x66\x61lse\x12\x17\n\x0fpretrained_ckpt\x18\x0c \x01(\t'
 )
 
 
@@ -110,6 +110,13 @@ _EVALCONFIG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='pretrained_ckpt', full_name='avod.protos.EvalConfig.pretrained_ckpt', index=11,
+      number=12, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -123,7 +130,7 @@ _EVALCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=40,
-  serialized_end=359,
+  serialized_end=384,
 )
 
 DESCRIPTOR.message_types_by_name['EvalConfig'] = _EVALCONFIG
