@@ -48,6 +48,8 @@ def save_predictions_in_kitti_format(model,
     elif do_eval_ain:
         predictions_root_dir += '_ain_{}_{}_{}'.format(
             sin_type, sin_level, sin_repeat)
+    elif model._config.is_adversarial:
+        predictions_root_dir += '_adv'              
 
     final_predictions_root_dir = predictions_root_dir + \
         '/final_predictions_and_scores/' + dataset.data_split
@@ -230,6 +232,8 @@ def set_up_summary_writer(model_config,
     elif do_eval_ain:
         logdir += '_ain_{}_{}_{}'.format(
             sin_type, sin_level, sin_repeat)
+    elif model_config.is_adversarial:
+        logdir += '_adv'             
 
     datetime_str = str(datetime.datetime.now())
     summary_writer = tf.compat.v1.summary.FileWriter(logdir + '/' + datetime_str,
@@ -284,7 +288,8 @@ def copy_kitti_native_code(checkpoint_name,output_dir=None,
                            do_eval_sin=False, do_eval_ain=False,
                            sin_type='rand',
                            sin_level=5,sin_repeat=10,
-                           sin_input_names=None):
+                           sin_input_names=None,
+                           is_adversarial=False):
     """Copies and compiles kitti native code.
 
     It also creates neccessary directories for storing the results
@@ -306,9 +311,13 @@ def copy_kitti_native_code(checkpoint_name,output_dir=None,
         kitti_native_code_copies = [os.path.join(output_dir,checkpoint_name) + \
             '/predictions_ain_{}_{}_{}/kitti_native_eval/'.format(
                 sin_type, sin_level, sin_repeat)]
+    elif is_adversarial:
+        kitti_native_code_copies = [os.path.join(output_dir,checkpoint_name) + \
+            '/predictions_adv/kitti_native_eval/'        
     else:
         kitti_native_code_copies = [os.path.join(output_dir,checkpoint_name) + \
             '/predictions/kitti_native_eval/']
+            
 
     # Only copy if the code has not been already copied over
     for (idx,kitti_native_code_copy) in enumerate(kitti_native_code_copies):
@@ -325,6 +334,9 @@ def copy_kitti_native_code(checkpoint_name,output_dir=None,
                 predictions_dir = os.path.join(output_dir,checkpoint_name) + \
                     '/predictions_ain_{}_{}_{}/'.format(
                         sin_type, sin_level, sin_repeat)
+            elif is_adversarial:
+                predictions_dir = os.path.join(output_dir,checkpoint_name) + \
+                    '/predictions_adv/' # TODO: find where this function is called since we updated method arugments                      
             else:
                 predictions_dir = os.path.join(output_dir,checkpoint_name) + \
                     '/predictions/'
@@ -354,6 +366,9 @@ def copy_kitti_native_code(checkpoint_name,output_dir=None,
                 sin_type, sin_level, sin_repeat)
             results_05_dir += '_ain_{}_{}_{}'.format(
                 sin_type, sin_level, sin_repeat)
+        elif is_adversarial:
+            results_dir += 'adv'
+            results_05_dir += 'adv'
 
         if not os.path.exists(results_dir):
             os.makedirs(results_dir)
@@ -361,12 +376,12 @@ def copy_kitti_native_code(checkpoint_name,output_dir=None,
             os.makedirs(results_05_dir)
 
 
-def run_kitti_native_script(checkpoint_name, score_threshold, global_step,
+def run_kitti_native_script(checkpoint_name, score_threshold, global_step, is_adversarial=False,
                             output_dir=None, do_eval_sin=False, do_eval_ain=False,
                             sin_type='rand', sin_level=5, sin_repeat=10,
                             sin_input_name=None, idx_repeat=None, data_split=None):
     """Runs the kitti native code script."""
-
+    # TODO FIND WHERE FUNCTION IS CALLED BC UPDATED METHOD ARUGMENTS
     if output_dir is None:
         output_dir = avod.root_dir() + '/data/outputs/'
 
@@ -378,6 +393,8 @@ def run_kitti_native_script(checkpoint_name, score_threshold, global_step,
     elif do_eval_ain:
         eval_script_dir += '_ain_{}_{}_{}'.format(
             sin_type, sin_level, sin_repeat)
+    elif is_adversarial:
+        eval_script_dir += 'adv'
     make_script = './scripts/offline_eval/kitti_native_eval/run_eval.sh'
     script_folder = eval_script_dir + \
         '/kitti_native_eval/'
@@ -391,6 +408,9 @@ def run_kitti_native_script(checkpoint_name, score_threshold, global_step,
             results_dir = avod.top_dir() + \
                 '/scripts/offline_eval/results_ain_{}_{}_{}/'.format(
                     sin_type, sin_level, sin_repeat)
+        elif is_adversarial:
+            results_dir = avod.top_dir() + \
+                '/scripts/offline_eval/results_adv/'
         else:
             results_dir = avod.top_dir() + \
                 '/scripts/offline_eval/results/'
@@ -403,6 +423,9 @@ def run_kitti_native_script(checkpoint_name, score_threshold, global_step,
             results_dir = os.path.join(output_dir,checkpoint_name) + \
                 '/offline_eval/results_ain_{}_{}_{}/'.format(
                     sin_type, sin_level, sin_repeat)
+        elif is_adversarial:
+            results_dir = os.path.join(output_dir,checkpoint_name) + \
+                '/offline_eval/results_adv/'           
         else:
             results_dir = os.path.join(output_dir,checkpoint_name) + \
                 '/offline_eval/results/'
@@ -424,7 +447,7 @@ def run_kitti_native_script(checkpoint_name, score_threshold, global_step,
                      str(results_dir)])
 
 
-def run_kitti_native_script_with_05_iou(checkpoint_name, score_threshold, global_step,
+def run_kitti_native_script_with_05_iou(checkpoint_name, score_threshold, global_step, is_adversarial=False,
                                         output_dir=None, do_eval_sin=False, do_eval_ain=False,
                                         sin_type='rand', sin_level=5, sin_repeat=10,
                                         sin_input_name=None, idx_repeat=None, data_split=None):
@@ -436,11 +459,14 @@ def run_kitti_native_script_with_05_iou(checkpoint_name, score_threshold, global
     eval_script_dir = os.path.join(output_dir,checkpoint_name) + \
         '/predictions'
     if do_eval_sin:
+        # TODO: fix is_adversarial for the rest of them search sin_{}_
         eval_script_dir += '_sin_{}_{}_{}/{}'.format(
             sin_type, sin_level, sin_repeat, sin_input_name)
     elif do_eval_ain:
         eval_script_dir += '_ain_{}_{}_{}'.format(
             sin_type, sin_level, sin_repeat)
+    elif is_adversarial:
+        eval_script_dir += '_adv'
     make_script = eval_script_dir + \
         '/kitti_native_eval/run_eval_05_iou.sh'
     script_folder = eval_script_dir + \
@@ -455,6 +481,9 @@ def run_kitti_native_script_with_05_iou(checkpoint_name, score_threshold, global
             results_dir = avod.top_dir() + \
                 '/scripts/offline_eval/results_05_iou_ain_{}_{}_{}/'.format(
                     sin_type, sin_level, sin_repeat)
+        elif is_adversarial:
+            results_dir = avod.top_dir() + \
+                '/scripts/offline_eval/results_05_iou_adv'
         else:
             results_dir = avod.top_dir() + \
                 '/scripts/offline_eval/results_05_iou/'
@@ -467,6 +496,9 @@ def run_kitti_native_script_with_05_iou(checkpoint_name, score_threshold, global
             results_dir = os.path.join(output_dir,checkpoint_name) + \
                 '/offline_eval/results_05_iou_ain_{}_{}_{}/'.format(
                     sin_type, sin_level, sin_repeat)
+        elif is_adversarial:
+            results_dir = os.path.join(output_dir,checkpoint_name) + \
+                '/offline_eval/results_05_iou_adv'           
         else:
             results_dir = os.path.join(output_dir,checkpoint_name) + \
                 '/offline_eval/results_05_iou/'
