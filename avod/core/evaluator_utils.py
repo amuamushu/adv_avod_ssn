@@ -313,7 +313,7 @@ def copy_kitti_native_code(checkpoint_name,output_dir=None,
                 sin_type, sin_level, sin_repeat)]
     elif is_adversarial:
         kitti_native_code_copies = [os.path.join(output_dir,checkpoint_name) + \
-            '/predictions_adv/kitti_native_eval/'        
+            '/predictions_adv/kitti_native_eval/']    
     else:
         kitti_native_code_copies = [os.path.join(output_dir,checkpoint_name) + \
             '/predictions/kitti_native_eval/']
@@ -367,8 +367,8 @@ def copy_kitti_native_code(checkpoint_name,output_dir=None,
             results_05_dir += '_ain_{}_{}_{}'.format(
                 sin_type, sin_level, sin_repeat)
         elif is_adversarial:
-            results_dir += 'adv'
-            results_05_dir += 'adv'
+            results_dir += '_adv'
+            results_05_dir += '_adv'
 
         if not os.path.exists(results_dir):
             os.makedirs(results_dir)
@@ -394,7 +394,7 @@ def run_kitti_native_script(checkpoint_name, score_threshold, global_step, is_ad
         eval_script_dir += '_ain_{}_{}_{}'.format(
             sin_type, sin_level, sin_repeat)
     elif is_adversarial:
-        eval_script_dir += 'adv'
+        eval_script_dir += '_adv'
     make_script = './scripts/offline_eval/kitti_native_eval/run_eval.sh'
     script_folder = eval_script_dir + \
         '/kitti_native_eval/'
