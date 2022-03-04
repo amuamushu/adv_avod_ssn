@@ -240,8 +240,7 @@ class AvodModel(model.DetectionModel):
         # Fully connected layers (Box Predictor)
         avod_layers_config = self.model_config.layers_config.avod_config
 
-        if self._config.is_adversarial: # TODO: Update to be is_adversarial --> for infernece (Ok because all of infernece is etheir adversarial or clean) and training (ok because use pretrained checkpoints such that remaining training is all adversarial)
-            print("OKOKOKOKO ADVERSARIAL EX")
+        if self._config.is_adversarial: 
             # predict normally
             fc_output_layers = \
                 avod_fc_layers_builder.build(
@@ -254,7 +253,7 @@ class AvodModel(model.DetectionModel):
                     ground_plane=ground_plane,
                     is_training=self._is_training)
 
-            # ADDED to get predicted values
+            # Added to get predicted values
             all_cls_logits = \
                 fc_output_layers[avod_fc_layers_builder.KEY_CLS_LOGITS]
             all_offsets = fc_output_layers[avod_fc_layers_builder.KEY_OFFSETS]
