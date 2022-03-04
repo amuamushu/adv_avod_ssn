@@ -336,7 +336,7 @@ def copy_kitti_native_code(checkpoint_name,output_dir=None,
                         sin_type, sin_level, sin_repeat)
             elif is_adversarial:
                 predictions_dir = os.path.join(output_dir,checkpoint_name) + \
-                    '/predictions_adv/' # TODO: find where this function is called since we updated method arugments                      
+                    '/predictions_adv/'
             else:
                 predictions_dir = os.path.join(output_dir,checkpoint_name) + \
                     '/predictions/'
