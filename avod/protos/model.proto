@@ -42,6 +42,8 @@ message ModelConfig {
     required LossConfig loss_config = 13;
 
     optional bool is_adversarial = 14 [default = false];
+
+    optional float adv_epsilon = 15 [default = 0.0];
 }
 
 message PathsConfig {
