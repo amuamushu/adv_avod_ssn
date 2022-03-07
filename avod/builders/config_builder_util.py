@@ -77,9 +77,6 @@ def get_configs_from_pipeline_file(pipeline_config_path,
     config_file_name = \
         os.path.split(pipeline_config_path)[1].split('.')[0]
     checkpoint_name = model_config.checkpoint_name
-    if (config_file_name != checkpoint_name) and (not eval_config.do_eval_sin) and \
-        (not eval_config.do_eval_ain):
-        raise ValueError('Config and checkpoint names must match.')
 
     if output_dir:
         output_root_dir = os.path.join(output_dir,checkpoint_name)
