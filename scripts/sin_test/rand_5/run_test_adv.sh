@@ -5,7 +5,7 @@ CONFIG_MAIN=avod/configs/simple/test_adv.config
 CONFIG_CLEAN=avod/configs/simple/test_adv_clean.config
 OUTPUT_DIR=outputs
 # EVAL_CKPTS='60 90 120' 
-EVAL_CKPTS='120'
+EVAL_CKPTS='-1'
 
 echo "training an adversarial model"
 python avod/experiments/run_training.py \
