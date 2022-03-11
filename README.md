@@ -1,5 +1,5 @@
 # AVOD for Single Source Robustness Against Adversarial Attacks.
-This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamushu)) and Ayush More ([@ayushmore](https://github.com/ayushmore)) over the course of roughly 6 months under the mentorship of Lily Weng. For context on our work, please take a look at our project proposal: https://docs.google.com/document/d/1Bgs7Imq6swV6FdzWi7xMLcEBQPIgxPxYTfv1dqjEyYM.
+This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamushu)) and Ayush More ([@ayushmore](https://github.com/ayushmore)) over the course of roughly 6 months under the mentorship of Lily Weng. 
 
 Visual Presentation: https://ayushmore.github.io/2022-03-07-improving-robustness-via-adversarial-training/
 
@@ -19,7 +19,27 @@ git clone --recurse-submodules https://github.com/amuamushu/adv_avod_ssn.git
 ### Downloading the data
 The dataset we will be using is the [KITTI dataset](http://www.cvlibs.net/datasets/kitti/). For the dataset and mini-batch setup, please follow the download steps listed in the [AVOD repository](https://github.com/kujason/avod#dataset).
 
-__TODO talk about new data setup__
+For the dataset, we will be follow a slightly different setup to the one on the AVOD repository.
+
+In your home directory, the layout should look like this:
+
+```
+root
+..\avod_data
+....\Kitti
+......\object
+........\testing
+........\training
+..........\calib
+..........\image_2
+..........\label_2
+..........\planes
+..........\velodyne
+....... train.txt
+....... val.txt
+..\adv_avod_ssn (this repository!)
+  
+```
 
 ### Test Run
 ```
