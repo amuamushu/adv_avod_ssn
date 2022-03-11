@@ -6,23 +6,21 @@ CONFIG_EVALSIN=avod/configs/simple/rand_5/pyramid_cars_with_aug_simple_evalsin_r
 CONFIG_EVALAIN=avod/configs/simple/rand_5/pyramid_cars_with_aug_simple_evalain_rand_5.config
 CONFIG_ADV=avod/configs/simple/pyramid_cars_with_aug_simple_adv.config
 OUTPUT_DIR=outputs
-# EVAL_CKPTS='60 90 120' 
-EVAL_CKPTS='120'
+EVAL_CKPTS='-1'
 
-# echo "TRAINING run_pyramid_cars_with_aug_simple"
-# # Train model for clean data
-# python avod/experiments/run_training.py \
-#         --pipeline_config=${CONFIG_MAIN} \
-#         --data_split='train' # \
-#         # --output_dir=${OUTPUT_DIR}
-# echo "INFERENCE CLEAN run_pyramid_cars_with_aug_simple"
-# # Eval data on validation set (Clean)
-# python avod/experiments/run_inference.py \
-#         --experiment_config=${CONFIG_MAIN} \
-#         --data_split='val' \
-#         --ckpt_indices ${EVAL_CKPTS}
-#         # --output_dir=${OUTPUT_DIR} \        
-
+echo "TRAINING run_pyramid_cars_with_aug_simple"
+# Train model for clean data
+python avod/experiments/run_training.py \
+        --pipeline_config=${CONFIG_MAIN} \
+        --data_split='train' \
+        --output_dir=${OUTPUT_DIR}
+echo "INFERENCE CLEAN run_pyramid_cars_with_aug_simple"
+# Eval data on validation set (Clean)
+python avod/experiments/run_inference.py \
+        --experiment_config=${CONFIG_MAIN} \
+        --data_split='val' \
+        --ckpt_indices ${EVAL_CKPTS} \
+        --output_dir=${OUTPUT_DIR}      
 echo "INFERENCE adversarial run_pyramid_cars_with_aug_simple"
 # Eval data on validation set (adversarial)
 python avod/experiments/run_inference.py \
@@ -30,27 +28,3 @@ python avod/experiments/run_inference.py \
         --data_split='val' \
         --ckpt_indices ${EVAL_CKPTS} \
         --output_dir=${OUTPUT_DIR}
-        
-                
-# echo "INFERENCE SIN run_pyramid_cars_with_aug_simple"
-# # Eval data on validation set (SIN)
-# python avod/experiments/run_inference.py \
-#         --experiment_config=${CONFIG_EVALSIN} \
-#         --data_split='val' \
-#         --ckpt_indices ${EVAL_CKPTS}
-#         # --output_dir=${OUTPUT_DIR} \        
-# echo "EVAL SIN run_pyramid_cars_with_aug_simple"
-# python ./utils_sin/sin_calc_avg_kitti_eval.py \
-#         --experiment_config=${CONFIG_EVALSIN} \
-#         --data_split='val'
-# echo "EVAL VAL run_pyramid_cars_with_aug_simple"
-# # Eval data on validation set (AIN)
-# python avod/experiments/run_inference.py \
-#         --experiment_config=${CONFIG_EVALAIN} \
-#         --data_split='val' \
-#         --ckpt_indices ${EVAL_CKPTS}
-#         # --output_dir=${OUTPUT_DIR} \        
-# echo "EVAL VAL 2 run_pyramid_cars_with_aug_simple"
-# python ./utils_sin/sin_calc_avg_kitti_eval.py \
-#         --experiment_config=${CONFIG_EVALAIN} \
-#         --data_split='val'
