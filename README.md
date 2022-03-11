@@ -24,7 +24,7 @@ For the dataset, we will be follow a slightly different setup to the one on the 
 In your home directory, the layout should look like this:
 
 ```
-root
+home
 ..\avod_data
 ....\Kitti
 ......\object
@@ -43,10 +43,11 @@ root
 
 ### Test Run
 ```
-python3 run.py [test] [clean]
+python3 run.py [test] [clean] [adv-test] [adv-model] [clean-model] [ssn-model]
 ```
 #### `test` target: 
 Runs training and inference on test data found under `test/testdata` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `test_data`.
+- Note: If you plan on only using the test data and not downloading the full dataset, please update 
 
 #### `clean` target: 
 Deletes all files in the `outputs` folder.
