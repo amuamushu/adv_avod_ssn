@@ -4,7 +4,7 @@ import json
 import shutil
 import subprocess
 
-from avod.experiments import run_evaluation, run_inference, run_training
+from avod.experiments import run_inference, run_training
 from utils_avod import avod_utils
 
 OUTPUT_PATH = "./outputs"
