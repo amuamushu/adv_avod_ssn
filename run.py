@@ -4,9 +4,6 @@ import json
 import shutil
 import subprocess
 
-from avod.experiments import run_inference, run_training
-from utils_avod import avod_utils
-
 OUTPUT_PATH = "./outputs"
 
 def main(targets):
@@ -22,12 +19,7 @@ def main(targets):
         os.mkdir(OUTPUT_PATH)
         
     if 'test' in targets:
-        with open('config/test.json') as fh:
-            test_config = json.load(fh)
-
-        # make the data target
-        avod_utils.run_main_with_command_line_args(run_training, **(test_config['training']))
-        avod_utils.run_main_with_command_line_args(run_inference, **(test_config['inference']))
+        subprocess.call('scripts/sin_test/rand_5/run_test_data.sh')
         return
 
     if 'adv-model' in targets:
