@@ -1,5 +1,9 @@
 #!/bin/bash
 #GPU_ID='2'
+# Bash script for testing that all components of our pipeline
+# runs okay without having to run the entire number of training
+# steps.
+
 # Choose GPU ID with CUDA_VISIBLE_DEVICES={id}
 CONFIG_MAIN=avod/configs/simple/test.config
 CONFIG_EVALSIN=avod/configs/simple/rand_5/evalsin_test.config
