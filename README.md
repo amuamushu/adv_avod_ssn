@@ -1,5 +1,5 @@
 # AVOD for Single Source Robustness Against Adversarial Attacks.
-This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamushu)) and Ayush More ([@ayushmore](https://github.com/ayushmore)) over the course of roughly 6 months under the mentorship of Lily Weng. 
+This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamushu)) and Ayush More ([@ayushmore](https://github.com/ayushmore)) over the course of 20 weeks under the mentorship of Lily Weng. 
 
 Visual Presentation: https://ayushmore.github.io/2022-03-07-improving-robustness-via-adversarial-training/
 
@@ -15,7 +15,6 @@ Make sure to clone the reposity in your home directory so the Python paths in th
 ```
 git clone --recurse-submodules https://github.com/amuamushu/adv_avod_ssn.git
 ```
-
 
 ### The dataset
 The dataset we will be using is the [KITTI dataset](http://www.cvlibs.net/datasets/kitti/). For the dataset and mini-batch setup, please follow the download steps listed in the [AVOD repository](https://github.com/kujason/avod#dataset).
@@ -47,6 +46,9 @@ More information about the true labels can be found here: https://github.com/kuj
 ```
 python3 run.py [clean] [test] [clean-model] [adv-model] [ssn-model]
 ```
+
+These targets can be run one-by-one in the order provided.
+
 ### `clean` target: 
 Deletes all files in the `outputs` folder.
 
@@ -56,16 +58,13 @@ Runs training and inference on test data found under `test/testdata` and writes 
 
 ### `clean-model` target:
 Runs training for a clean model and adversarial inference on the full dataset found at `home/avod_data` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `pyramid_cars_with_aug_simple`.
-- Calling this target runs the `run_pyramid_cars_with_aug_simple.sh` script. More details on what is happening is provided in the next section.
 
 ### `adv-model` target:
 Runs training for an adversarial model and all three types of inference (clean, adversarial, SSN) on the full dataset found at `home/avod_data` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `test_adv`.
-- Calling this target runs the `run_adv.sh` script. More details on what is happening is provided in the next section.
 - **NOTE**: Since the adversarial model only fine-tunes the clean model, running this target requires the clean model to be completely trained.
 
 ### `ssn-model` target:
 Runs training for a clean model and adversarial inference on the full dataset found at `home/avod_data` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `trainsin_pyramid_cars_with_aug_simple_rand_5`.
-- Calling this target runs the `run_trainsin_pyramid_cars_with_aug_simple.sh` script. More details on what is happening is provided in the next section.
 - **NOTE**: Since the single-source-noise model only fine-tunes the clean model, running this target requires the clean model to be completely trained.
 
 Note: `pyramid_cars_with_aug_simple` and `trainsin_pyramid_cars_with_aug_simple_rand_5` are the same checkpoint names that our previous work author Taewan Kim had so we kept it for ease of comparison.
@@ -85,19 +84,17 @@ Each shell script is responsible for running the entire experiment for one model
   - Every couple of steps during training, the current trained model is saved to a checkpoint. 
 
 #### Configuration Files: 
-The configuration files for the test data target can be found under `./config`. 
 
-The more comprehensive configuration files are found under `./avod/configs`.
 
 ## Experimental Configurations
-Each shell script references multiple `.config` files: one for training the model and one or more for inference. 
+Each shell script references multiple `.config` files: one for training the model and one or more for inference. These are found under `./avod/configs`.
 
 ### `model_config`:
 Contains configurations for the object detection model. Notable configurations are:
 - `model_name`: Should be `avod_model` for all the experiments we run.
 - `checkpoint_name`: The name of the experiment checkpoint. This determines what folder the outputs are saved to.
 - `is_adversarial`: A boolean value defaulted to False. Train the model adversarially and runs adversarial inference if True, otherwise train the model normally.
-- `adv_epsilon`: The epsilon to use for our perturbation. To replicate our paper, this should be 0.9. Only used if the model is being trained or run inference on adversarially.
+- `adv_epsilon`: The epsilon to use for our perturbation. Only used if the model is being trained or running inference adversarially.
 
 ### `train_config`: 
 - `pretrained_ckpt`: What checkpoint to continue training from. This would be used and should be updated as the model is being fine-tuned.
