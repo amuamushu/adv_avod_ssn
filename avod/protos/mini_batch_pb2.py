@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1c\x61vod/protos/mini_batch.proto\x12\x0b\x61vod.protos\"\xb5\x01\n\x0fMiniBatchConfig\x12\x19\n\x11\x64\x65nsity_threshold\x18\x01 \x02(\x05\x12\x33\n\nrpn_config\x18\x02 \x02(\x0b\x32\x1f.avod.protos.MiniBatchRpnConfig\x12\x35\n\x0b\x61vod_config\x18\x03 \x02(\x0b\x32 .avod.protos.MiniBatchAvodConfig\x12\x1b\n\x0emini_batch_dir\x18\x04 \x01(\t:\x03../\"h\n\x16MiniBatchIouThresholds\x12\x12\n\nneg_iou_lo\x18\x03 \x02(\x02\x12\x12\n\nneg_iou_hi\x18\x04 \x02(\x02\x12\x12\n\npos_iou_lo\x18\x05 \x02(\x02\x12\x12\n\npos_iou_hi\x18\x06 \x02(\x02\"\xbd\x01\n\x12MiniBatchRpnConfig\x12@\n\x11iou_2d_thresholds\x18\x01 \x01(\x0b\x32#.avod.protos.MiniBatchIouThresholdsH\x00\x12@\n\x11iou_3d_thresholds\x18\x02 \x01(\x0b\x32#.avod.protos.MiniBatchIouThresholdsH\x00\x12\x17\n\x0fmini_batch_size\x18\x03 \x02(\x05\x42\n\n\x08iou_type\"n\n\x13MiniBatchAvodConfig\x12>\n\x11iou_2d_thresholds\x18\x01 \x02(\x0b\x32#.avod.protos.MiniBatchIouThresholds\x12\x17\n\x0fmini_batch_size\x18\x02 \x02(\x05'
+  serialized_pb=b'\n\x1c\x61vod/protos/mini_batch.proto\x12\x0b\x61vod.protos\"\xbf\x01\n\x0fMiniBatchConfig\x12\x19\n\x11\x64\x65nsity_threshold\x18\x01 \x02(\x05\x12\x33\n\nrpn_config\x18\x02 \x02(\x0b\x32\x1f.avod.protos.MiniBatchRpnConfig\x12\x35\n\x0b\x61vod_config\x18\x03 \x02(\x0b\x32 .avod.protos.MiniBatchAvodConfig\x12%\n\x0emini_batch_dir\x18\x04 \x01(\t:\r../avod_data/\"h\n\x16MiniBatchIouThresholds\x12\x12\n\nneg_iou_lo\x18\x03 \x02(\x02\x12\x12\n\nneg_iou_hi\x18\x04 \x02(\x02\x12\x12\n\npos_iou_lo\x18\x05 \x02(\x02\x12\x12\n\npos_iou_hi\x18\x06 \x02(\x02\"\xbd\x01\n\x12MiniBatchRpnConfig\x12@\n\x11iou_2d_thresholds\x18\x01 \x01(\x0b\x32#.avod.protos.MiniBatchIouThresholdsH\x00\x12@\n\x11iou_3d_thresholds\x18\x02 \x01(\x0b\x32#.avod.protos.MiniBatchIouThresholdsH\x00\x12\x17\n\x0fmini_batch_size\x18\x03 \x02(\x05\x42\n\n\x08iou_type\"n\n\x13MiniBatchAvodConfig\x12>\n\x11iou_2d_thresholds\x18\x01 \x02(\x0b\x32#.avod.protos.MiniBatchIouThresholds\x12\x17\n\x0fmini_batch_size\x18\x02 \x02(\x05'
 )
 
 
@@ -57,7 +57,7 @@ _MINIBATCHCONFIG = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='mini_batch_dir', full_name='avod.protos.MiniBatchConfig.mini_batch_dir', index=3,
       number=4, type=9, cpp_type=9, label=1,
-      has_default_value=True, default_value=b"../".decode('utf-8'),
+      has_default_value=True, default_value=b"../avod_data/".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -74,7 +74,7 @@ _MINIBATCHCONFIG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=46,
-  serialized_end=227,
+  serialized_end=237,
 )
 
 
@@ -126,8 +126,8 @@ _MINIBATCHIOUTHRESHOLDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=229,
-  serialized_end=333,
+  serialized_start=239,
+  serialized_end=343,
 )
 
 
@@ -177,8 +177,8 @@ _MINIBATCHRPNCONFIG = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=336,
-  serialized_end=525,
+  serialized_start=346,
+  serialized_end=535,
 )
 
 
@@ -216,8 +216,8 @@ _MINIBATCHAVODCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=527,
-  serialized_end=637,
+  serialized_start=537,
+  serialized_end=647,
 )
 
 _MINIBATCHCONFIG.fields_by_name['rpn_config'].message_type = _MINIBATCHRPNCONFIG
