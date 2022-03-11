@@ -2,6 +2,7 @@ import sys
 import os
 import json
 import shutil
+import subprocess
 
 from avod.experiments import run_evaluation, run_inference, run_training
 from utils_avod import avod_utils
@@ -27,6 +28,7 @@ def main(targets):
         # make the data target
         avod_utils.run_main_with_command_line_args(run_training, **(test_config['training']))
         avod_utils.run_main_with_command_line_args(run_inference, **(test_config['inference']))
+        return
 
     if 'adv-test' in targets:
         with open('config/test_adv.json') as fh:
@@ -34,9 +36,26 @@ def main(targets):
 
         # make the data target
         avod_utils.run_main_with_command_line_args(run_training, **(test_config['training']))
-        avod_utils.run_main_with_command_line_args(run_inference, **(test_config['inference']))        
+        avod_utils.run_main_with_command_line_args(run_inference, **(test_config['inference']))
+        return
 
-    return
+    if 'adv-model' in targets:
+        # Runs the training and all the inferences (clean, adversarial, and SSN) on trained
+        # model. Training is skipped if the model is already trained.
+        subprocess.call(['scripts/sin_test/rand_5/run_adv.sh'])
+        return
+    
+    if 'clean-model' in targets:
+        # Runs the training and the adversarial inferences on trained
+        # model. Training is skipped if the model is already trained.
+        subprocess.call(['scripts/sin_test/rand_5/run_pyramid_cars_with_aug_simple.sh'])
+        return
+
+    if 'ssn-model' in targets:
+        # Runs the training and the adversarial inferences on trained
+        # model. Training is skipped if the model is already trained.        
+        subprocess.call(['scripts/sin_test/rand_5/run_trainsin_pyramid_cars_with_aug_simple.sh'])
+        return
 
 
 if __name__ == '__main__':
