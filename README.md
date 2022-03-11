@@ -180,3 +180,7 @@ Run these two commands to set the Python paths for `avod_ssn` and `wavedata`:
 export PYTHONPATH=$PYTHONPATH:'<path to avod>'
 export PYTHONPATH=$PYTHONPATH:'<path to wavedata>'
 ```
+
+### Pretrained Models:
+Since training takes many hours, we included our pretrained clean model here:
+https://drive.google.com/drive/folders/18U7t-4gU4sXvAD33GEuVnwSwUSItHdPX?usp=sharing
