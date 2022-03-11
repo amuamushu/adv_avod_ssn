@@ -16,7 +16,8 @@ Make sure to clone the reposity in your home directory so the Python paths in th
 git clone --recurse-submodules https://github.com/amuamushu/adv_avod_ssn.git
 ```
 
-### Downloading the data
+
+### The dataset
 The dataset we will be using is the [KITTI dataset](http://www.cvlibs.net/datasets/kitti/). For the dataset and mini-batch setup, please follow the download steps listed in the [AVOD repository](https://github.com/kujason/avod#dataset).
 
 For the dataset, we will be follow a slightly different setup to the one on the AVOD repository.
@@ -30,34 +31,51 @@ home
 ......\object
 ........\testing
 ........\training
-..........\calib
-..........\image_2
-..........\label_2
-..........\planes
-..........\velodyne
-....... train.txt
-....... val.txt
-..\adv_avod_ssn (this repository!)
+..........\calib # camera calibration (can ignore)
+..........\image_2 # the 2D images
+..........\label_2 # true labels and bounding boxes
+..........\planes 
+..........\velodyne # the lidar point clouds
+....... train.txt # list of sample names to use for training
+....... val.txt # list of sample names to use for validation
+..\adv_avod_ssn # this repository!
   
 ```
+More information about the true labels can be found here: https://github.com/kujason/avod/wiki/Data-Formats
 
-### Test Run
+## Run
 ```
-python3 run.py [test] [clean] [adv-test] [adv-model] [clean-model] [ssn-model]
+python3 run.py [clean] [test] [clean-model] [adv-model] [ssn-model]
 ```
-#### `test` target: 
-Runs training and inference on test data found under `test/testdata` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `test_data`.
-- Note: If you plan on only using the test data and not downloading the full dataset, please update 
-
-#### `clean` target: 
+### `clean` target: 
 Deletes all files in the `outputs` folder.
 
-#### Configuration Files: 
-The configuration files used can be found under `./config`. 
+### `test` target: 
+Runs training and inference on test data found under `test/testdata` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `test_data`.
+- Note: If you plan on only using the test data and not downloading the full dataset, in `scripts/offline_eval/kitti_native/eval/run_eval.sh`, please update `$prev/avod_data/Kitti/object/training/label_2/` to be `$repo/test/testdata/Kitti/object/training/label_2/`. `run_eval.sh` is used for computing the AP Scores after running inference. 
 
-**Here are what the configurations mean:**
+### `clean-model` target:
+Runs training for a clean model and adversarial inference on the full dataset found at `home/avod_data` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `pyramid_cars_with_aug_simple`.
+- Calling this target runs the `run_pyramid_cars_with_aug_simple.sh` script. More details on what is happening is provided in the next section.
 
-`pipeline_config`: Specifies the path to the model configurations (batch size, number of steps, learning rate, number of iterations, etc).
+### `adv-model` target:
+Runs training for an adversarial model and all three types of inference (clean, adversarial, SSN) on the full dataset found at `home/avod_data` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `test_adv`.
+- Calling this target runs the `run_adv.sh` script. More details on what is happening is provided in the next section.
+- **NOTE**: Since the adversarial model only fine-tunes the clean model, running this target requires the clean model to be completely trained.
+
+### `ssn-model` target:
+Runs training for a clean model and adversarial inference on the full dataset found at `home/avod_data` and writes the predictions and AP scores to the `outputs/<checkpoint_name>` directory. For this target, the checkpoint name is `trainsin_pyramid_cars_with_aug_simple_rand_5`.
+- Calling this target runs the `run_trainsin_pyramid_cars_with_aug_simple.sh` script. More details on what is happening is provided in the next section.
+- **NOTE**: Since the single-source-noise model only fine-tunes the clean model, running this target requires the clean model to be completely trained.
+
+Note: `pyramid_cars_with_aug_simple` and `trainsin_pyramid_cars_with_aug_simple_rand_5` are the same checkpoint names that our previous work author Taewan Kim had so we kept it for ease of comparison.
+
+## The Shell Script
+Each shell script is responsible for running the entire experiment for one model. Details about the specific experiments are covered in the paper.
+
+**Arguments for training, inference, and evaluation:**
+
+`pipeline_config`: Specifies the path to the experiment configurations (batch size, number of steps, learning rate, number of iterations, dataset path, etc).
 
 `data_split`: Can be `train`, `val`, or `test`. Whichever keyword is specified determines which samples are used.
 
@@ -65,6 +83,29 @@ The configuration files used can be found under `./config`.
 
 `ckpt_indices`: This value specifies which model checkpoint to use for inference. 
   - Every couple of steps during training, the current trained model is saved to a checkpoint. 
+
+#### Configuration Files: 
+The configuration files for the test data target can be found under `./config`. 
+
+The more comprehensive configuration files are found under `./avod/configs`.
+
+## Experimental Configurations
+Each shell script references multiple `.config` files: one for training the model and one or more for inference. 
+
+### `model_config`:
+Contains configurations for the object detection model. Notable configurations are:
+- `model_name`: Should be `avod_model` for all the experiments we run.
+- `checkpoint_name`: The name of the experiment checkpoint. This determines what folder the outputs are saved to.
+- `is_adversarial`: A boolean value defaulted to False. Train the model adversarially and runs adversarial inference if True, otherwise train the model normally.
+- `adv_epsilon`: The epsilon to use for our perturbation. To replicate our paper, this should be 0.9. Only used if the model is being trained or run inference on adversarially.
+
+### `train_config`: 
+- `pretrained_ckpt`: What checkpoint to continue training from. This would be used and should be updated as the model is being fine-tuned.
+
+### `eval_config`:
+- `dataset_dir`: The dataset used for training and infernece. 
+- `pretrained_chkpt`: What trained model checkpoint to use for inference. This is useful if the inference `.config` file is different from the training `.config` file. 
+
 
 ### Viewing Results
 #### AP Scores: 
@@ -84,10 +125,10 @@ After inference, if the AP scores are not saved properly, they can be manually c
 bash scripts/offline_eval/kitti_native_eval/run_eval.sh ./outputs/<checkpoint_name>/<prediction_type>/kitti_native_eval/ 0.1_val <training_step> <checkpoint_name>
 ```
 - `checkpoint_name`: name of the checkpoint as specified in the `.config` file
-- `prediction_type`: would be
-   - `prediction` if want inference results on clean data
-   - `prediction_adv` if want inference results on adversarial data
-   - `predictions_sin_rand_5.0_5` if want inference on SSN data
+- `prediction_type`: would be ...
+   - `prediction` if inference results on clean data is wanted
+   - `prediction_adv` if inference results on adversarial data is wanted
+   - `predictions_sin_rand_5.0_5` if inference results on SSN data is wanted
 
 
 #### Visualization with bounding boxes, IoU scores, and confidence level: 
@@ -137,5 +178,5 @@ http://www.cvlibs.net/publications/Geiger2012CVPR.pdf
 Run these two commands to set the Python paths for `avod_ssn` and `wavedata`:
 ```
 export PYTHONPATH=$PYTHONPATH:'<path to avod>'
-export PYTHONPATH=$PYTHONPATH:'<path to avod>'
+export PYTHONPATH=$PYTHONPATH:'<path to wavedata>'
 ```
