@@ -16,6 +16,11 @@ Make sure to clone the reposity in your home directory so the Python paths in th
 git clone --recurse-submodules https://github.com/amuamushu/adv_avod_ssn.git
 ```
 
+### Downloading the data
+The dataset we will be using is the [KITTI dataset](http://www.cvlibs.net/datasets/kitti/). For the dataset and mini-batch setup, please follow the download steps listed in the [AVOD repository](https://github.com/kujason/avod#dataset).
+
+__TODO talk about new data setup__
+
 ### Test Run
 ```
 python3 run.py [test] [clean]
@@ -27,7 +32,7 @@ Runs training and inference on test data found under `test/testdata` and writes 
 Deletes all files in the `outputs` folder.
 
 #### Configuration Files: 
-The configuration files used can be found under `config/test.json`. 
+The configuration files used can be found under `./config`. 
 
 **Here are what the configurations mean:**
 
@@ -53,6 +58,17 @@ car_detection_3D AP: 77.332970 67.945251 66.929985
 car_heading_3D AP: 77.288345 67.749474 66.543098
 ```
 
+After inference, if the AP scores are not saved properly, they can be manually calculated and saved again using this command:
+```
+bash scripts/offline_eval/kitti_native_eval/run_eval.sh ./outputs/<checkpoint_name>/<prediction_type>/kitti_native_eval/ 0.1_val <training_step> <checkpoint_name>
+```
+- `checkpoint_name`: name of the checkpoint as specified in the `.config` file
+- `prediction_type`: would be
+   - `prediction` if want inference results on clean data
+   - `prediction_adv` if want inference results on adversarial data
+   - `predictions_sin_rand_5.0_5` if want inference on SSN data
+
+
 #### Visualization with bounding boxes, IoU scores, and confidence level: 
 Run the below code to generate bounding boxes on top of the images used during inference. Images will be saved to `outputs/<checkpoint_name>/predictions/images_2d`
 
@@ -63,8 +79,7 @@ python3 demos/show_predictions_2d.py <checkpoint_name>
 **Here is an example of a generated image**:
 ![000152](https://user-images.githubusercontent.com/35519361/152208158-833ca90f-911a-4ab5-a846-e167cfc2e1a3.png)
 
-## The dataset
-The dataset we will be using is the [KITTI dataset](http://www.cvlibs.net/datasets/kitti/). For the dataset and mini-batch setup, please follow the steps listed in the [AVOD repository](https://github.com/kujason/avod#dataset). If you are not using the sample data in `test/testdata`, preparing the data is necessary for training and inference.
+
 
 ## References
 This project builds off of Kim, Taewan and Ghosh, Joydeep's work on "Single Source Robustness in Deep Fusion Models." In their GitHub repository (https://github.com/twankim/avod_ssn), they incorporate single source noise into the inputs of the AVOD 3D object detection model. We expand on their work and code by incorporating adversarial noise, rather than Gaussian noise, into the input images.
