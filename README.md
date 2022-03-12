@@ -2,6 +2,7 @@
 This project is worked on by Amy Nguyen ([@amuamushu](https://github.com/amuamushu)) and Ayush More ([@ayushmore](https://github.com/ayushmore)) over the course of 20 weeks under the mentorship of Lily Weng. 
 
 Visual Presentation: https://ayushmore.github.io/2022-03-07-improving-robustness-via-adversarial-training/
+
 Oral Presentation Slides: https://docs.google.com/presentation/d/1DSoFa1vUQBcjghLfds6ce4sIG0qkBvtL1c2ixlEs7qc/edit?usp=sharing
 
 ## Setup
